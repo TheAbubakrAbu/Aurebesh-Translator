@@ -1,0 +1,614 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7202B2B52C7F232A00CFA079 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7202B2A82C7F232800CFA079 /* Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		72AE27152D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
+		72AE27162D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
+		72AE27182D3C9233009728F9 /* AurebeshLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27172D3C9233009728F9 /* AurebeshLetters.swift */; };
+		72AE27192D3C9233009728F9 /* AurebeshLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27172D3C9233009728F9 /* AurebeshLetters.swift */; };
+		72AE27222D3C9268009728F9 /* AlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271C2D3C9268009728F9 /* AlphabetView.swift */; };
+		72AE27232D3C9268009728F9 /* AurebeshTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271D2D3C9268009728F9 /* AurebeshTranslator.swift */; };
+		72AE27242D3C9268009728F9 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271E2D3C9268009728F9 /* LaunchScreen.swift */; };
+		72AE27252D3C9268009728F9 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271F2D3C9268009728F9 /* SplashScreen.swift */; };
+		72AE27262D3C9268009728F9 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27202D3C9268009728F9 /* TranslateView.swift */; };
+		72AE27272D3C9268009728F9 /* AlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271C2D3C9268009728F9 /* AlphabetView.swift */; };
+		72AE27292D3C9268009728F9 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271E2D3C9268009728F9 /* LaunchScreen.swift */; };
+		72AE272B2D3C9268009728F9 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27202D3C9268009728F9 /* TranslateView.swift */; };
+		72E492942CCC824300A4D138 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928A2CCC824300A4D138 /* CreditsView.swift */; };
+		72E492972CCC824300A4D138 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928E2CCC824300A4D138 /* Settings.swift */; };
+		72E492982CCC824300A4D138 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928F2CCC824300A4D138 /* SettingsView.swift */; };
+		72E4929B2CCC824300A4D138 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E492852CCC824300A4D138 /* Preview Assets.xcassets */; };
+		72E4929C2CCC824300A4D138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E492882CCC824300A4D138 /* Assets.xcassets */; };
+		72E4929D2CCC824300A4D138 /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 72E492892CCC824300A4D138 /* Aurebesh.otf */; };
+		72E4929E2CCC824300A4D138 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928E2CCC824300A4D138 /* Settings.swift */; };
+		72E4929F2CCC824300A4D138 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928F2CCC824300A4D138 /* SettingsView.swift */; };
+		72E492A32CCC824300A4D138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E492882CCC824300A4D138 /* Assets.xcassets */; };
+		72E492A42CCC824300A4D138 /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 72E492892CCC824300A4D138 /* Aurebesh.otf */; };
+		72E492AB2CCC826700A4D138 /* AurebeshWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E492A92CCC826700A4D138 /* AurebeshWatchApp.swift */; };
+		72E492AC2CCC826700A4D138 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E492A52CCC826700A4D138 /* Preview Assets.xcassets */; };
+		72E492AD2CCC826700A4D138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E492A72CCC826700A4D138 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7202B2B32C7F232A00CFA079 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7202B2482C7DC6A200CFA079 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7202B2A72C7F232800CFA079;
+			remoteInfo = "Watch App Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7202B2B92C7F232A00CFA079 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				7202B2B52C7F232A00CFA079 /* Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7202B2502C7DC6A200CFA079 /* iPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7202B2A82C7F232800CFA079 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72AE27142D3C920C009728F9 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
+		72AE27172D3C9233009728F9 /* AurebeshLetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshLetters.swift; sourceTree = "<group>"; };
+		72AE271C2D3C9268009728F9 /* AlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetView.swift; sourceTree = "<group>"; };
+		72AE271D2D3C9268009728F9 /* AurebeshTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshTranslator.swift; sourceTree = "<group>"; };
+		72AE271E2D3C9268009728F9 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		72AE271F2D3C9268009728F9 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		72AE27202D3C9268009728F9 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
+		72E492852CCC824300A4D138 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		72E492882CCC824300A4D138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72E492892CCC824300A4D138 /* Aurebesh.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aurebesh.otf; sourceTree = "<group>"; };
+		72E4928A2CCC824300A4D138 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
+		72E4928B2CCC824300A4D138 /* Datapad Translator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Datapad Translator.entitlements"; sourceTree = "<group>"; };
+		72E4928E2CCC824300A4D138 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		72E4928F2CCC824300A4D138 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		72E492A52CCC826700A4D138 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		72E492A72CCC826700A4D138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72E492A82CCC826700A4D138 /* Watch App Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Watch App Watch App.entitlements"; sourceTree = "<group>"; };
+		72E492A92CCC826700A4D138 /* AurebeshWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshWatchApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7202B24D2C7DC6A200CFA079 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7202B2A52C7F232800CFA079 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7202B2472C7DC6A200CFA079 = {
+			isa = PBXGroup;
+			children = (
+				72E492922CCC824300A4D138 /* Datapad Translator */,
+				72E492AA2CCC826700A4D138 /* Watch App Watch App */,
+				7202B2512C7DC6A200CFA079 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7202B2512C7DC6A200CFA079 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7202B2502C7DC6A200CFA079 /* iPhone.app */,
+				7202B2A82C7F232800CFA079 /* Watch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		72AE27212D3C9268009728F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				72AE271D2D3C9268009728F9 /* AurebeshTranslator.swift */,
+				72AE271F2D3C9268009728F9 /* SplashScreen.swift */,
+				72AE271E2D3C9268009728F9 /* LaunchScreen.swift */,
+				72AE27202D3C9268009728F9 /* TranslateView.swift */,
+				72AE271C2D3C9268009728F9 /* AlphabetView.swift */,
+				72E4928F2CCC824300A4D138 /* SettingsView.swift */,
+				72E4928A2CCC824300A4D138 /* CreditsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		72E492862CCC824300A4D138 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				72E492852CCC824300A4D138 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		72E492922CCC824300A4D138 /* Datapad Translator */ = {
+			isa = PBXGroup;
+			children = (
+				72E492862CCC824300A4D138 /* Preview Content */,
+				72E4928B2CCC824300A4D138 /* Datapad Translator.entitlements */,
+				72E492882CCC824300A4D138 /* Assets.xcassets */,
+				72E492892CCC824300A4D138 /* Aurebesh.otf */,
+				72AE27212D3C9268009728F9 /* Views */,
+				72E4928E2CCC824300A4D138 /* Settings.swift */,
+				72AE27172D3C9233009728F9 /* AurebeshLetters.swift */,
+				72AE27142D3C920C009728F9 /* WatchConnectivity.swift */,
+			);
+			path = "Datapad Translator";
+			sourceTree = "<group>";
+		};
+		72E492A62CCC826700A4D138 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				72E492A52CCC826700A4D138 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		72E492AA2CCC826700A4D138 /* Watch App Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				72E492A62CCC826700A4D138 /* Preview Content */,
+				72E492A82CCC826700A4D138 /* Watch App Watch App.entitlements */,
+				72E492A72CCC826700A4D138 /* Assets.xcassets */,
+				72E492A92CCC826700A4D138 /* AurebeshWatchApp.swift */,
+			);
+			path = "Watch App Watch App";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7202B24F2C7DC6A200CFA079 /* iPhone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7202B25E2C7DC6A300CFA079 /* Build configuration list for PBXNativeTarget "iPhone" */;
+			buildPhases = (
+				7202B24C2C7DC6A200CFA079 /* Sources */,
+				7202B24D2C7DC6A200CFA079 /* Frameworks */,
+				7202B24E2C7DC6A200CFA079 /* Resources */,
+				7202B2B92C7F232A00CFA079 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7202B2B42C7F232A00CFA079 /* PBXTargetDependency */,
+			);
+			name = iPhone;
+			packageProductDependencies = (
+			);
+			productName = "Datapad Translator";
+			productReference = 7202B2502C7DC6A200CFA079 /* iPhone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7202B2A72C7F232800CFA079 /* Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7202B2B62C7F232A00CFA079 /* Build configuration list for PBXNativeTarget "Watch" */;
+			buildPhases = (
+				7202B2A42C7F232800CFA079 /* Sources */,
+				7202B2A52C7F232800CFA079 /* Frameworks */,
+				7202B2A62C7F232800CFA079 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Watch;
+			packageProductDependencies = (
+			);
+			productName = "Watch App Watch App";
+			productReference = 7202B2A82C7F232800CFA079 /* Watch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7202B2482C7DC6A200CFA079 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					7202B24F2C7DC6A200CFA079 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					7202B2A72C7F232800CFA079 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+				};
+			};
+			buildConfigurationList = 7202B24B2C7DC6A200CFA079 /* Build configuration list for PBXProject "Aurebesh Translator" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7202B2472C7DC6A200CFA079;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7202B2512C7DC6A200CFA079 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7202B24F2C7DC6A200CFA079 /* iPhone */,
+				7202B2A72C7F232800CFA079 /* Watch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7202B24E2C7DC6A200CFA079 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72E4929B2CCC824300A4D138 /* Preview Assets.xcassets in Resources */,
+				72E4929C2CCC824300A4D138 /* Assets.xcassets in Resources */,
+				72E4929D2CCC824300A4D138 /* Aurebesh.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7202B2A62C7F232800CFA079 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72E492A32CCC824300A4D138 /* Assets.xcassets in Resources */,
+				72E492A42CCC824300A4D138 /* Aurebesh.otf in Resources */,
+				72E492AC2CCC826700A4D138 /* Preview Assets.xcassets in Resources */,
+				72E492AD2CCC826700A4D138 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7202B24C2C7DC6A200CFA079 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72AE27222D3C9268009728F9 /* AlphabetView.swift in Sources */,
+				72AE27232D3C9268009728F9 /* AurebeshTranslator.swift in Sources */,
+				72AE27242D3C9268009728F9 /* LaunchScreen.swift in Sources */,
+				72AE27252D3C9268009728F9 /* SplashScreen.swift in Sources */,
+				72AE27262D3C9268009728F9 /* TranslateView.swift in Sources */,
+				72E492942CCC824300A4D138 /* CreditsView.swift in Sources */,
+				72AE27162D3C920C009728F9 /* WatchConnectivity.swift in Sources */,
+				72E492972CCC824300A4D138 /* Settings.swift in Sources */,
+				72AE27182D3C9233009728F9 /* AurebeshLetters.swift in Sources */,
+				72E492982CCC824300A4D138 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7202B2A42C7F232800CFA079 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72AE27272D3C9268009728F9 /* AlphabetView.swift in Sources */,
+				72AE27292D3C9268009728F9 /* LaunchScreen.swift in Sources */,
+				72AE272B2D3C9268009728F9 /* TranslateView.swift in Sources */,
+				72E4929E2CCC824300A4D138 /* Settings.swift in Sources */,
+				72E4929F2CCC824300A4D138 /* SettingsView.swift in Sources */,
+				72AE27192D3C9233009728F9 /* AurebeshLetters.swift in Sources */,
+				72E492AB2CCC826700A4D138 /* AurebeshWatchApp.swift in Sources */,
+				72AE27152D3C920C009728F9 /* WatchConnectivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7202B2B42C7F232A00CFA079 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7202B2A72C7F232800CFA079 /* Watch */;
+			targetProxy = 7202B2B32C7F232A00CFA079 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7202B25C2C7DC6A300CFA079 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7202B25D2C7DC6A300CFA079 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7202B25F2C7DC6A300CFA079 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Datapad Translator/Datapad Translator.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Datapad Translator/Preview Content\"";
+				DEVELOPMENT_TEAM = 8HQMC4MQ59;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Datapad-Translator-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Aurebesh;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.22;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7202B2602C7DC6A300CFA079 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Datapad Translator/Datapad Translator.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Datapad Translator/Preview Content\"";
+				DEVELOPMENT_TEAM = 8HQMC4MQ59;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Datapad-Translator-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Aurebesh;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.22;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7202B2B72C7F232A00CFA079 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Watch App Watch App/Watch App Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Watch App Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 8HQMC4MQ59;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Watch-App-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Aurebesh;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.Quran.Elmallah.Datapad-Translator";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.22;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		7202B2B82C7F232A00CFA079 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Watch App Watch App/Watch App Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Watch App Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 8HQMC4MQ59;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Watch-App-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Aurebesh;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.Quran.Elmallah.Datapad-Translator";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.22;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7202B24B2C7DC6A200CFA079 /* Build configuration list for PBXProject "Aurebesh Translator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7202B25C2C7DC6A300CFA079 /* Debug */,
+				7202B25D2C7DC6A300CFA079 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7202B25E2C7DC6A300CFA079 /* Build configuration list for PBXNativeTarget "iPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7202B25F2C7DC6A300CFA079 /* Debug */,
+				7202B2602C7DC6A300CFA079 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7202B2B62C7F232A00CFA079 /* Build configuration list for PBXNativeTarget "Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7202B2B72C7F232A00CFA079 /* Debug */,
+				7202B2B82C7F232A00CFA079 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7202B2482C7DC6A200CFA079 /* Project object */;
+}
