@@ -1,6 +1,4 @@
 import SwiftUI
-import Foundation
-import UIKit
 
 struct SettingsView: View {
     @EnvironmentObject var settings: Settings
