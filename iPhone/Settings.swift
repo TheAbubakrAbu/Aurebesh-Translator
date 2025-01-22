@@ -48,7 +48,7 @@ class Settings: ObservableObject {
         ]
         appGroupUserDefaults?.register(defaults: defaults)
 
-        self.colorAccent = AccentColor(rawValue: appGroupUserDefaults?.string(forKey: "colorAccent") ?? "gold") ?? .gold
+        self.colorAccent = AccentColor(rawValue: appGroupUserDefaults?.string(forKey: "theColorAccent") ?? "gold") ?? .gold
         self.digraph = appGroupUserDefaults?.bool(forKey: "digraph") ?? true
     }
     

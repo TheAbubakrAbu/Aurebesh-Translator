@@ -55,7 +55,6 @@ struct LaunchScreen: View {
                         .scaledToFit()
                         .cornerRadius(10)
                         .frame(width: 150, height: 150)
-                        .colorMultiply(settings.colorAccent.color)
                         .padding()
                 }
                 .foregroundColor(settings.colorAccent.color)
