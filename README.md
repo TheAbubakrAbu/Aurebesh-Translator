@@ -19,11 +19,6 @@ While Aurebesh Translator offers simplicity and ease of use, it is the free vers
 - An Aurebesh keyboard for use inside and outside the app.
 
 
-## License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code, but please provide attribution.
-
-
 ## Acknowledgments
 
 Special thanks to the Star Wars community for inspiring this project and to everyone who contributed to making Aurebesh Translator a reality.
