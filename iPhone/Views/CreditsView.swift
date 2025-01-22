@@ -50,12 +50,16 @@ struct CreditsView: View {
                 .font(.body)
                 .foregroundColor(settings.colorAccent.color)
 
-            Link("Click on this link to view the first rendition of Datapad/Aurebesh Translator that I made when I was fifteen in AP Computer Science Principles as a sophomore (2021 - 2022) via code.org", destination: URL(string: "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc")!)
+            Link("View the first rendition of Datapad/Aurebesh Translator that I made when I was fifteen in AP Computer Science Principles as a sophomore (2021) via code.org", destination: URL(string: "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc")!)
+                .font(.body)
+                .foregroundColor(settings.colorAccent.color)
+            
+            Link("View the source code on GitHub: github.com/TheAbubakrAbu/Aurebesh-Translator", destination: URL(string: "https://github.com/TheAbubakrAbu/Aurebesh-Translator")!)
                 .font(.body)
                 .foregroundColor(settings.colorAccent.color)
             
             Section {
-                Text("Version 1.2.2")
+                Text("Version 1.2.3")
                     .font(.caption)
             }
             

@@ -24,6 +24,7 @@ struct SettingsList: View {
     @EnvironmentObject var settings: Settings
     
     @State private var showingCredits = false
+    @State private var showingDatapad = false
         
     var body: some View {
         List {
@@ -134,7 +135,7 @@ struct SettingsList: View {
                 )
                 #endif
                 
-                VStack(alignment: .center) {
+                /*VStack(alignment: .center) {
                     #if !os(watchOS)
                     LazyVGrid(columns: [
                         GridItem(.flexible(), spacing: 12),
@@ -212,7 +213,16 @@ struct SettingsList: View {
                 }
                 #if !os(watchOS)
                 .listRowSeparator(.hidden, edges: .bottom)
-                #endif
+                #endif*/
+                Button(action: {
+                    settings.hapticFeedback()
+                    
+                    showingDatapad = true
+                }) {
+                    Text("Accent colors are now exclusive to Datapad. Tap here to learn more.")
+                        .font(.subheadline)
+                        .foregroundColor(settings.colorAccent.color)
+                }
             }
             
             Section(header: Text("CREDITS")) {
@@ -232,6 +242,9 @@ struct SettingsList: View {
                     Text("View Credits")
                         .font(.subheadline)
                         .foregroundColor(settings.colorAccent.color)
+                }
+                .sheet(isPresented: $showingDatapad) {
+                    SplashScreen()
                 }
                 .sheet(isPresented: $showingCredits) {
                     NavigationView {

@@ -121,7 +121,6 @@
 		72AE27212D3C9268009728F9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				72AE271D2D3C9268009728F9 /* AurebeshTranslator.swift */,
 				72AE271F2D3C9268009728F9 /* SplashScreen.swift */,
 				72AE271E2D3C9268009728F9 /* LaunchScreen.swift */,
 				72AE27202D3C9268009728F9 /* TranslateView.swift */,
@@ -138,6 +137,7 @@
 				72E4928B2CCC824300A4D138 /* iPhone.entitlements */,
 				72AE272C2D3C9828009728F9 /* iPhone.plist */,
 				72E492882CCC824300A4D138 /* Assets.xcassets */,
+				72AE271D2D3C9268009728F9 /* AurebeshTranslator.swift */,
 				72AE27212D3C9268009728F9 /* Views */,
 				72E4928E2CCC824300A4D138 /* Settings.swift */,
 				72AE27172D3C9233009728F9 /* AurebeshLetters.swift */,
@@ -450,7 +450,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.22;
+				MARKETING_VERSION = 1.23;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -485,7 +485,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.22;
+				MARKETING_VERSION = 1.23;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -514,7 +514,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.22;
+				MARKETING_VERSION = 1.23;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -546,7 +546,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.22;
+				MARKETING_VERSION = 1.23;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

@@ -5,7 +5,7 @@ class Settings: ObservableObject {
     static let shared = Settings()
     
     @Published var colorAccent: AccentColor {
-        didSet { appGroupUserDefaults?.setValue(colorAccent.rawValue, forKey: "colorAccent") }
+        didSet { appGroupUserDefaults?.setValue(colorAccent.rawValue, forKey: "theColorAccent") }
     }
     
     @Published var digraph: Bool {
