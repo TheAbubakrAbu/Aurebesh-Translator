@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		720296842D419C3E009BA21E /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 720296822D419C3E009BA21E /* Aurebesh.otf */; };
+		720296852D419C3E009BA21E /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 720296822D419C3E009BA21E /* Aurebesh.otf */; };
 		7202B2B52C7F232A00CFA079 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7202B2A82C7F232800CFA079 /* Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		72AE27152D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
 		72AE27162D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
 		72AE27182D3C9233009728F9 /* AurebeshLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27172D3C9233009728F9 /* AurebeshLetters.swift */; };
 		72AE27192D3C9233009728F9 /* AurebeshLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27172D3C9233009728F9 /* AurebeshLetters.swift */; };
 		72AE27222D3C9268009728F9 /* AlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271C2D3C9268009728F9 /* AlphabetView.swift */; };
-		72AE27232D3C9268009728F9 /* AurebeshTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271D2D3C9268009728F9 /* AurebeshTranslator.swift */; };
+		72AE27232D3C9268009728F9 /* AurebeshApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271D2D3C9268009728F9 /* AurebeshApp.swift */; };
 		72AE27242D3C9268009728F9 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271E2D3C9268009728F9 /* LaunchScreen.swift */; };
 		72AE27252D3C9268009728F9 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271F2D3C9268009728F9 /* SplashScreen.swift */; };
 		72AE27262D3C9268009728F9 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27202D3C9268009728F9 /* TranslateView.swift */; };
@@ -26,12 +28,10 @@
 		72E492972CCC824300A4D138 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928E2CCC824300A4D138 /* Settings.swift */; };
 		72E492982CCC824300A4D138 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928F2CCC824300A4D138 /* SettingsView.swift */; };
 		72E4929C2CCC824300A4D138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E492882CCC824300A4D138 /* Assets.xcassets */; };
-		72E4929D2CCC824300A4D138 /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 72E492892CCC824300A4D138 /* Aurebesh.otf */; };
 		72E4929E2CCC824300A4D138 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928E2CCC824300A4D138 /* Settings.swift */; };
 		72E4929F2CCC824300A4D138 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928F2CCC824300A4D138 /* SettingsView.swift */; };
 		72E492A32CCC824300A4D138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E492882CCC824300A4D138 /* Assets.xcassets */; };
-		72E492A42CCC824300A4D138 /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 72E492892CCC824300A4D138 /* Aurebesh.otf */; };
-		72E492AB2CCC826700A4D138 /* AurebeshWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E492A92CCC826700A4D138 /* AurebeshWatch.swift */; };
+		72E492AB2CCC826700A4D138 /* AurebeshApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E492A92CCC826700A4D138 /* AurebeshApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,12 +59,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		720296822D419C3E009BA21E /* Aurebesh.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aurebesh.otf; sourceTree = "<group>"; };
 		7202B2502C7DC6A200CFA079 /* iPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7202B2A82C7F232800CFA079 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72AE27142D3C920C009728F9 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
 		72AE27172D3C9233009728F9 /* AurebeshLetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshLetters.swift; sourceTree = "<group>"; };
 		72AE271C2D3C9268009728F9 /* AlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetView.swift; sourceTree = "<group>"; };
-		72AE271D2D3C9268009728F9 /* AurebeshTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshTranslator.swift; sourceTree = "<group>"; };
+		72AE271D2D3C9268009728F9 /* AurebeshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshApp.swift; sourceTree = "<group>"; };
 		72AE271E2D3C9268009728F9 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		72AE271F2D3C9268009728F9 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		72AE27202D3C9268009728F9 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
@@ -72,13 +73,14 @@
 		72AE272D2D3C986A009728F9 /* Apple Watch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Apple Watch.plist"; sourceTree = "<group>"; };
 		72AE27392D3C9B01009728F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72E492882CCC824300A4D138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		72E492892CCC824300A4D138 /* Aurebesh.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aurebesh.otf; sourceTree = "<group>"; };
 		72E4928A2CCC824300A4D138 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		72E4928B2CCC824300A4D138 /* iPhone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPhone.entitlements; sourceTree = "<group>"; };
 		72E4928E2CCC824300A4D138 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		72E4928F2CCC824300A4D138 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		72E492A82CCC826700A4D138 /* Apple Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Watch.entitlements"; sourceTree = "<group>"; };
-		72E492A92CCC826700A4D138 /* AurebeshWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshWatch.swift; sourceTree = "<group>"; };
+		72E492A92CCC826700A4D138 /* AurebeshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshApp.swift; sourceTree = "<group>"; };
+		72E4E5892D41A37200E7FADD /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		72E4E58A2D41A37200E7FADD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +101,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		720296832D419C3E009BA21E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				720296822D419C3E009BA21E /* Aurebesh.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		7202B2472C7DC6A200CFA079 = {
 			isa = PBXGroup;
 			children = (
-				72E492892CCC824300A4D138 /* Aurebesh.otf */,
+				72E4E5892D41A37200E7FADD /* LICENSE.txt */,
+				72E4E58A2D41A37200E7FADD /* README.md */,
+				720296832D419C3E009BA21E /* Fonts */,
 				72E492922CCC824300A4D138 /* iPhone */,
 				72E492AA2CCC826700A4D138 /* Apple Watch */,
 				7202B2512C7DC6A200CFA079 /* Products */,
@@ -137,7 +149,7 @@
 				72E4928B2CCC824300A4D138 /* iPhone.entitlements */,
 				72AE272C2D3C9828009728F9 /* iPhone.plist */,
 				72E492882CCC824300A4D138 /* Assets.xcassets */,
-				72AE271D2D3C9268009728F9 /* AurebeshTranslator.swift */,
+				72AE271D2D3C9268009728F9 /* AurebeshApp.swift */,
 				72AE27212D3C9268009728F9 /* Views */,
 				72E4928E2CCC824300A4D138 /* Settings.swift */,
 				72AE27172D3C9233009728F9 /* AurebeshLetters.swift */,
@@ -152,7 +164,7 @@
 				72E492A82CCC826700A4D138 /* Apple Watch.entitlements */,
 				72AE272D2D3C986A009728F9 /* Apple Watch.plist */,
 				72AE27392D3C9B01009728F9 /* Assets.xcassets */,
-				72E492A92CCC826700A4D138 /* AurebeshWatch.swift */,
+				72E492A92CCC826700A4D138 /* AurebeshApp.swift */,
 			);
 			path = "Apple Watch";
 			sourceTree = "<group>";
@@ -244,8 +256,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				72E4929C2CCC824300A4D138 /* Assets.xcassets in Resources */,
+				720296842D419C3E009BA21E /* Aurebesh.otf in Resources */,
 				72AE273A2D3C9B01009728F9 /* Assets.xcassets in Resources */,
-				72E4929D2CCC824300A4D138 /* Aurebesh.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,8 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				72E492A32CCC824300A4D138 /* Assets.xcassets in Resources */,
+				720296852D419C3E009BA21E /* Aurebesh.otf in Resources */,
 				72AE273B2D3C9B01009728F9 /* Assets.xcassets in Resources */,
-				72E492A42CCC824300A4D138 /* Aurebesh.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72AE27222D3C9268009728F9 /* AlphabetView.swift in Sources */,
-				72AE27232D3C9268009728F9 /* AurebeshTranslator.swift in Sources */,
+				72AE27232D3C9268009728F9 /* AurebeshApp.swift in Sources */,
 				72AE27242D3C9268009728F9 /* LaunchScreen.swift in Sources */,
 				72AE27252D3C9268009728F9 /* SplashScreen.swift in Sources */,
 				72AE27262D3C9268009728F9 /* TranslateView.swift in Sources */,
@@ -289,7 +301,7 @@
 				72E4929E2CCC824300A4D138 /* Settings.swift in Sources */,
 				72E4929F2CCC824300A4D138 /* SettingsView.swift in Sources */,
 				72AE27192D3C9233009728F9 /* AurebeshLetters.swift in Sources */,
-				72E492AB2CCC826700A4D138 /* AurebeshWatch.swift in Sources */,
+				72E492AB2CCC826700A4D138 /* AurebeshApp.swift in Sources */,
 				72AE27152D3C920C009728F9 /* WatchConnectivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
