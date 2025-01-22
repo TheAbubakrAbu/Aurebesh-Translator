@@ -2,6 +2,8 @@ import SwiftUI
 
 struct SplashScreen: View {
     @EnvironmentObject var settings: Settings
+    
+    @Environment(\.presentationMode) var presentationMode
         
     var body: some View {
         NavigationView {
@@ -24,6 +26,7 @@ struct SplashScreen: View {
                     settings.hapticFeedback()
                     
                     withAnimation(.smooth()) {
+                        presentationMode.wrappedValue.dismiss()
                         settings.firstLaunch = false
                     }
                     
@@ -49,6 +52,7 @@ struct SplashScreen: View {
                         settings.hapticFeedback()
                         
                         withAnimation(.smooth()) {
+                            presentationMode.wrappedValue.dismiss()
                             settings.firstLaunch = false
                         }
                         
@@ -76,6 +80,7 @@ struct SplashScreen: View {
                         settings.hapticFeedback()
                         
                         withAnimation(.smooth) {
+                            presentationMode.wrappedValue.dismiss()
                             settings.firstLaunch = false
                         }
                     }) {
