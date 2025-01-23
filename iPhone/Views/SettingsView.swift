@@ -219,9 +219,15 @@ struct SettingsList: View {
                     
                     showingDatapad = true
                 }) {
+                    #if !os(watchOS)
                     Text("Accent colors are now exclusive to Datapad. Tap here to learn more.")
                         .font(.subheadline)
                         .foregroundColor(settings.colorAccent.color)
+                    #else
+                    Text("Accent colors are now exclusive to Datapad.")
+                        .font(.subheadline)
+                        .foregroundColor(settings.colorAccent.color)
+                    #endif
                 }
             }
             
