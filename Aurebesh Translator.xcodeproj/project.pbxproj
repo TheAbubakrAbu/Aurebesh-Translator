@@ -22,8 +22,6 @@
 		72AE27272D3C9268009728F9 /* AlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271C2D3C9268009728F9 /* AlphabetView.swift */; };
 		72AE27292D3C9268009728F9 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271E2D3C9268009728F9 /* LaunchScreen.swift */; };
 		72AE272B2D3C9268009728F9 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27202D3C9268009728F9 /* TranslateView.swift */; };
-		72AE273A2D3C9B01009728F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72AE27392D3C9B01009728F9 /* Assets.xcassets */; };
-		72AE273B2D3C9B01009728F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72AE27392D3C9B01009728F9 /* Assets.xcassets */; };
 		72E492942CCC824300A4D138 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928A2CCC824300A4D138 /* CreditsView.swift */; };
 		72E492972CCC824300A4D138 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928E2CCC824300A4D138 /* Settings.swift */; };
 		72E492982CCC824300A4D138 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4928F2CCC824300A4D138 /* SettingsView.swift */; };
@@ -69,15 +67,12 @@
 		72AE271E2D3C9268009728F9 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		72AE271F2D3C9268009728F9 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		72AE27202D3C9268009728F9 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
-		72AE272C2D3C9828009728F9 /* iPhone.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = iPhone.plist; sourceTree = "<group>"; };
-		72AE272D2D3C986A009728F9 /* Apple Watch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Apple Watch.plist"; sourceTree = "<group>"; };
-		72AE27392D3C9B01009728F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72AE272C2D3C9828009728F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72E492882CCC824300A4D138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72E4928A2CCC824300A4D138 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
-		72E4928B2CCC824300A4D138 /* iPhone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPhone.entitlements; sourceTree = "<group>"; };
+		72E4928B2CCC824300A4D138 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		72E4928E2CCC824300A4D138 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		72E4928F2CCC824300A4D138 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		72E492A82CCC826700A4D138 /* Apple Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Watch.entitlements"; sourceTree = "<group>"; };
 		72E492A92CCC826700A4D138 /* AurebeshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshApp.swift; sourceTree = "<group>"; };
 		72E4E5892D41A37200E7FADD /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		72E4E58A2D41A37200E7FADD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -114,7 +109,7 @@
 			children = (
 				72E4E5892D41A37200E7FADD /* LICENSE.txt */,
 				72E4E58A2D41A37200E7FADD /* README.md */,
-				720296832D419C3E009BA21E /* Fonts */,
+				726032662D42160600919FF7 /* Resources */,
 				72E492922CCC824300A4D138 /* iPhone */,
 				72E492AA2CCC826700A4D138 /* Apple Watch */,
 				7202B2512C7DC6A200CFA079 /* Products */,
@@ -128,6 +123,17 @@
 				7202B2A82C7F232800CFA079 /* Watch.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		726032662D42160600919FF7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				72E4928B2CCC824300A4D138 /* Entitlements.entitlements */,
+				72AE272C2D3C9828009728F9 /* Info.plist */,
+				72E492882CCC824300A4D138 /* Assets.xcassets */,
+				720296832D419C3E009BA21E /* Fonts */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		72AE27212D3C9268009728F9 /* Views */ = {
@@ -146,9 +152,6 @@
 		72E492922CCC824300A4D138 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
-				72E4928B2CCC824300A4D138 /* iPhone.entitlements */,
-				72AE272C2D3C9828009728F9 /* iPhone.plist */,
-				72E492882CCC824300A4D138 /* Assets.xcassets */,
 				72AE271D2D3C9268009728F9 /* AurebeshApp.swift */,
 				72AE27212D3C9268009728F9 /* Views */,
 				72E4928E2CCC824300A4D138 /* Settings.swift */,
@@ -161,9 +164,6 @@
 		72E492AA2CCC826700A4D138 /* Apple Watch */ = {
 			isa = PBXGroup;
 			children = (
-				72E492A82CCC826700A4D138 /* Apple Watch.entitlements */,
-				72AE272D2D3C986A009728F9 /* Apple Watch.plist */,
-				72AE27392D3C9B01009728F9 /* Assets.xcassets */,
 				72E492A92CCC826700A4D138 /* AurebeshApp.swift */,
 			);
 			path = "Apple Watch";
@@ -257,7 +257,6 @@
 			files = (
 				72E4929C2CCC824300A4D138 /* Assets.xcassets in Resources */,
 				720296842D419C3E009BA21E /* Aurebesh.otf in Resources */,
-				72AE273A2D3C9B01009728F9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +266,6 @@
 			files = (
 				72E492A32CCC824300A4D138 /* Assets.xcassets in Resources */,
 				720296852D419C3E009BA21E /* Aurebesh.otf in Resources */,
-				72AE273B2D3C9B01009728F9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +348,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -369,6 +368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -413,6 +413,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -426,6 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -439,16 +441,16 @@
 		7202B25F2C7DC6A300CFA079 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Phone";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = iPhone/iPhone.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iPhone/iPhone.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = Aurebesh;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -474,16 +476,16 @@
 		7202B2602C7DC6A300CFA079 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Phone";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = iPhone/iPhone.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iPhone/iPhone.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = Aurebesh;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -509,15 +511,15 @@
 		7202B2B72C7F232A00CFA079 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Watch";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Apple Watch/Apple Watch.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Apple Watch/Apple Watch.plist";
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = Aurebesh;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.Quran.Elmallah.Datapad-Translator";
@@ -541,15 +543,15 @@
 		7202B2B82C7F232A00CFA079 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Watch";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Apple Watch/Apple Watch.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Apple Watch/Apple Watch.plist";
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = Aurebesh;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.Quran.Elmallah.Datapad-Translator";
