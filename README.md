@@ -1,8 +1,7 @@
 # Aurebesh Translator
 
 Welcome to **Aurebesh Translator**, your gateway to the iconic galactic Aurebesh alphabet! This simple, free, and private app allows users to effortlessly translate between English and Aurebesh, offering a clean, user-friendly experience for fans of galactic exploration.
-
-This repository contains the source code for the Aurebesh Translator app, a Swift-based iOS, iPadOS, watchOS, and macOS application built with simplicity, privacy, and functionality in mind.
+Published on the App Store on October 22, 2024.
 
 ## Features
 
@@ -17,11 +16,6 @@ While Aurebesh Translator offers simplicity and ease of use, it is the free vers
 - Immersive galactic-themed UI.
 - Customization options for fonts and themes.
 - An Aurebesh keyboard for use inside and outside the app.
-
-
-## Acknowledgments
-
-Special thanks to the Star Wars community for inspiring this project and to everyone who contributed to making Aurebesh Translator a reality.
 
 
 ## License
