@@ -283,6 +283,30 @@ struct SettingsList: View {
                     .navigationViewStyle(.stack)
                 }
                 #endif
+                
+                HStack {
+                    Text("Contact me at: ")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.leading)
+                    
+                    Text("ammelmallah@icloud.com")
+                        .font(.subheadline)
+                        .foregroundColor(settings.colorAccent.color)
+                        .multilineTextAlignment(.leading)
+                        .padding(.leading, -4)
+                }
+                #if !os(watchOS)
+                .contextMenu {
+                    Button(action: {
+                        UIPasteboard.general.string = "ammelmallah@icloud.com"
+                    }) {
+                        HStack {
+                            Image(systemName: "doc.on.doc")
+                            Text("Copy Email")
+                        }
+                    }
+                }
+                #endif
             }
         }
         .animation(.smooth(duration: 1.0), value: settings.colorAccent.color)
