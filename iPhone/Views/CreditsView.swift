@@ -46,28 +46,30 @@ struct CreditsView: View {
             }
             .listRowSeparator(.hidden)
             
-            Link("Check out Datapad | Aurebesh Translator, featuring a galactic-themed UI, widgets, and support for three types of Aurebesh", destination: URL(string: "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone")!)
-                .font(.body)
-                .foregroundColor(settings.colorAccent.color)
-
-            Link("View the first rendition of Datapad/Aurebesh Translator that I made when I was fifteen in AP Computer Science Principles as a sophomore (2021) via code.org", destination: URL(string: "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc")!)
-                .font(.body)
-                .foregroundColor(settings.colorAccent.color)
-            
-            Link("View the source code on GitHub: github.com/TheAbubakrAbu/Aurebesh-Translator", destination: URL(string: "https://github.com/TheAbubakrAbu/Aurebesh-Translator")!)
-                .font(.body)
-                .foregroundColor(settings.colorAccent.color)
+            Section {
+                Link("Check out Datapad | Aurebesh Translator, featuring a galactic-themed UI, widgets, and support for three types of Aurebesh", destination: URL(string: "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone")!)
+                    .font(.body)
+                    .foregroundColor(settings.colorAccent.color)
+                
+                Link("View the first rendition of Datapad/Aurebesh Translator that I made when I was fifteen in AP Computer Science Principles as a sophomore (2021) via code.org", destination: URL(string: "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc")!)
+                    .font(.body)
+                    .foregroundColor(settings.colorAccent.color)
+                
+                Link("View the source code on GitHub: github.com/TheAbubakrAbu/Aurebesh-Translator", destination: URL(string: "https://github.com/TheAbubakrAbu/Aurebesh-Translator")!)
+                    .font(.body)
+                    .foregroundColor(settings.colorAccent.color)
+            }
             
             Section {
-                Text("Version 1.2.3")
+                Text("Version 1.3.3")
                     .font(.caption)
             }
             
             Section(header: Text("CREDITS")) {
                 Link("Credit for the Aurebesh font goes to Pixel Sagas", destination: URL(string: "https://www.fonts4free.net/aurebesh-font.html")!)
                     .foregroundColor(settings.colorAccent.color)
+                    .font(.body)
             }
-            .font(.body)
             
             Section(header: Text("APPS BY ABUBAKR ELMALLAH")) {
                 HStack {
