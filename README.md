@@ -1,5 +1,7 @@
 # Aurebesh Translator
 
+**Apple Ecosystem App** – Available on iPhone, iPad, Mac, and Apple Watch
+
 Welcome to **Aurebesh Translator**, your Gateway to the Galactic Aurebesh Alphabet! Translate effortlessly between English and Aurebesh with a simple, free, and private experience.
 
 I was an 18-year-old first year college student when this app was published on the App Store on October 22, 2024.
