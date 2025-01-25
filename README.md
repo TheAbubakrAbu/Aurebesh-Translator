@@ -2,11 +2,11 @@
 
 **Apple Ecosystem App** – Available on iPhone, iPad, Mac, and Apple Watch
 
-Welcome to **Aurebesh Translator**, your Gateway to the Galactic Aurebesh Alphabet! Translate effortlessly between English and Aurebesh with a simple, free, and private experience.
+Welcome to **Aurebesh Translator**, your Gateway to the Aurebesh Alphabet! Translate effortlessly between English and Aurebesh with a simple, free, and private experience.
 
-I was an 18-year-old first year college student when this app was published on the App Store on October 22, 2024.
+I was an **18-year-old** first year college student when this app was published on the App Store on **October 22, 2024**.
 
-[Download Aurebesh Translator on the App Store here](https://apps.apple.com/us/app/aurebesh-translator/id6670201513?platform=iphone)
+[**Download Aurebesh Translator on the App Store here**](https://apps.apple.com/us/app/aurebesh-translator/id6670201513?platform=iphone)
 
 ## Features
 
