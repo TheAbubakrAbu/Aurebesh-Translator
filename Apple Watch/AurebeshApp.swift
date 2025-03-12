@@ -19,18 +19,16 @@ struct AurebeshWatchApp: App {
                 } else {
                     TabView {
                         TranslateView()
-                            .environmentObject(settings)
                         
                         AlphabetView()
-                            .environmentObject(settings)
                         
                         SettingsView()
-                            .environmentObject(settings)
                     }
                 }
             }
             .environmentObject(settings)
             .accentColor(settings.colorAccent.color)
+            .tint(settings.colorAccent.color)
             .background(.black)
             .preferredColorScheme(.dark)
         }

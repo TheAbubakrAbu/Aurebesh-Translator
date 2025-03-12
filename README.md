@@ -37,4 +37,4 @@ For feedback, feature requests, or questions, feel free to reach out:
 - **Website**: [abubakrelmallah.com](https://abubakrelmallah.com/)
 - **LinkedIn**: [linkedin.com/abubakr](https://www.linkedin.com/in/abubakr-elmallah-416a0b273/)
 
-Created by Abubakr Elmallah
+Created by **Abubakr Elmallah**

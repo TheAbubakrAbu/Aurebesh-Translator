@@ -176,7 +176,7 @@ struct TranslateList: View {
                 
                 VStack {
                     let spacing: CGFloat = 8
-                    let buttonSize = (UIScreen.main.bounds.width - (spacing * 8)) / 7
+                    let buttonSize = (min(UIScreen.main.bounds.width, 800) - (spacing * 8)) / 7
                     
                     LazyVGrid(columns: [
                         GridItem(.flexible(), spacing: spacing),
@@ -391,6 +391,7 @@ struct TranslateList: View {
         }
         .padding(.horizontal)
         .padding(.bottom)
+        .frame(maxWidth: 800)
         .onChange(of: settings.digraph) { newValue in
             if !newValue || !(settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina") {
                 if buttonState == .digraph {

@@ -1,11 +1,16 @@
 import SwiftUI
 import WatchConnectivity
+import StoreKit
 
 @main
 struct AurebeshTranslatorApp: App {
     @StateObject private var settings = Settings.shared
     
     @State private var isLaunching = true
+    
+    @AppStorage("timeSpent") private var timeSpent: Double = 0
+    @AppStorage("shouldShowRateAlert") private var shouldShowRateAlert: Bool = true
+    @State private var startTime: Date?
     
     init() {
         _ = WatchConnectivityManager.shared
@@ -42,9 +47,39 @@ struct AurebeshTranslatorApp: App {
             }
             .environmentObject(settings)
             .accentColor(settings.colorAccent.color)
+            .tint(settings.colorAccent.color)
             .preferredColorScheme(settings.colorScheme)
             .transition(.opacity)
             .animation(.easeInOut, value: settings.firstLaunch)
+            .onAppear {
+                if shouldShowRateAlert {
+                    startTime = Date()
+                    
+                    let remainingTime = max(180 - timeSpent, 0)
+                    if remainingTime == 0 {
+                        guard let windowScene = UIApplication.shared.connectedScenes
+                            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else {
+                            return
+                        }
+                        SKStoreReviewController.requestReview(in: windowScene)
+                        shouldShowRateAlert = false
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + remainingTime) {
+                            guard let windowScene = UIApplication.shared.connectedScenes
+                                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else {
+                                return
+                            }
+                            SKStoreReviewController.requestReview(in: windowScene)
+                            shouldShowRateAlert = false
+                        }
+                    }
+                }
+            }
+            .onDisappear {
+                if shouldShowRateAlert, let startTime = startTime {
+                    timeSpent += Date().timeIntervalSince(startTime)
+                }
+            }
         }
         .onChange(of: settings.colorAccent) { _ in
             sendMessageToWatch()
