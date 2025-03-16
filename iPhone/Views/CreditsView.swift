@@ -76,7 +76,7 @@ struct CreditsView: View {
                             }
                         }
                     
-                    Link("View the source code on GitHub: github.com/TheAbubakrAbu/Aurebesh-Translator", destination: URL(string: "https://github.com/TheAbubakrAbu/Aurebesh-Translator")!)
+                    Link("View the source code: github.com/TheAbubakrAbu/Aurebesh-Translator", destination: URL(string: "https://github.com/TheAbubakrAbu/Aurebesh-Translator")!)
                         .font(.body)
                         .foregroundColor(settings.colorAccent.color)
                         .contextMenu {
@@ -89,28 +89,10 @@ struct CreditsView: View {
                                 }
                             }
                         }
-                    
-                    Button(action: {
-                        if settings.hapticOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
-                        
-                        withAnimation(.smooth()) {
-                            if let url = URL(string: "itms-apps://itunes.apple.com/app/id6670201513?action=write-review") {
-                                UIApplication.shared.open(url)
-                            }
-                        }
-                    }) {
-                        HStack {
-                            Text("Leave a Review")
-                            
-                            Image(systemName: "rectangle.and.pencil.and.ellipsis.rtl")
-                        }
-                        .font(.body)
-                        .foregroundColor(settings.colorAccent.color)
-                    }
                 }
                 
                 Section {
-                    Text("Version 1.3.4")
+                    Text("Version 1.3.5")
                         .font(.caption)
                 }
                 

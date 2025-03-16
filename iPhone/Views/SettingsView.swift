@@ -160,21 +160,41 @@ struct SettingsList: View {
                 
                 #if !os(watchOS)
                 Button(action: {
-                    if settings.hapticOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
+                    settings.hapticFeedback()
                     
-                    withAnimation(.smooth()) {
-                        showingCredits = true
-                    }
+                    showingCredits = true
                 }) {
-                    Text("View Credits")
-                        .font(.subheadline)
-                        .foregroundColor(settings.colorAccent.color)
+                    HStack {
+                        Image(systemName: "scroll.fill")
+                        
+                        Text("View Credits")
+                    }
+                    .font(.subheadline)
+                    .foregroundColor(settings.colorAccent.color)
+                }
+                .sheet(isPresented: $showingCredits) {
+                    CreditsView()
                 }
                 .sheet(isPresented: $showingDatapad) {
                     SplashScreen()
                 }
-                .sheet(isPresented: $showingCredits) {
-                    CreditsView()
+                
+                Button(action: {
+                    if settings.hapticOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
+                    
+                    withAnimation(.smooth()) {
+                        if let url = URL(string: "itms-apps://itunes.apple.com/app/id6670201513?action=write-review") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: "rectangle.and.pencil.and.ellipsis.rtl")
+                        
+                        Text("Leave a Review")
+                    }
+                    .font(.subheadline)
+                    .foregroundColor(settings.colorAccent.color)
                 }
                 #endif
                 
