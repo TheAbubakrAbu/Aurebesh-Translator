@@ -5,7 +5,7 @@ struct LaunchScreen: View {
 
     @Binding var isLaunching: Bool
 
-    @State private var size = 0.8
+    @State private var size = 0.6
     @State private var opacity = 0.5
     @State private var gradientSize: CGFloat = 0.0
 
@@ -31,26 +31,14 @@ struct LaunchScreen: View {
         }
     }
 
-    var gradient: LinearGradient {
-        LinearGradient(
-            colors: [settings.colorAccent.color.opacity(0.3), settings.colorAccent.color.opacity(0.5)],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-    }
-
     var body: some View {
         ZStack {
             backgroundColor
                 .ignoresSafeArea()
 
-            gradient
-                .clipShape(Circle())
-                .scaleEffect(gradientSize)
-
             VStack {
                 VStack {
-                    Image("Aurebesh")
+                    Image("Aurebesh Launch")
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(10)
@@ -65,8 +53,8 @@ struct LaunchScreen: View {
         .onAppear {
             triggerHapticFeedback()
             
-            withAnimation(.easeInOut(duration: 0.5)) {
-                size = 0.9
+            withAnimation(.easeInOut(duration: 0.75)) {
+                size = 1.25
                 opacity = 1.0
                 gradientSize = 3.0
                 
@@ -76,12 +64,12 @@ struct LaunchScreen: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 triggerHapticFeedback()
                 
-                withAnimation(.easeOut(duration: 0.5)) {
-                    size = 0.8
+                withAnimation(.easeOut(duration: 0.75)) {
+                    size = 1.0
                     gradientSize = 0.0
                 }
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     triggerHapticFeedback()
 
                     withAnimation {

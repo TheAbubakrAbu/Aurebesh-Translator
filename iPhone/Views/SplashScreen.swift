@@ -11,14 +11,12 @@ struct SplashScreen: View {
                 HStack {
                     Text("Hello There! Welcome to Aurebesh Translator, your quick and easy tool for translating between English and Aurebesh.\n\nFor a more immersive experience, check out Datapad | Aurebesh Translator. It has all the features of this app plus a galactic-themed UI, widgets, complications, and support for three types of Aurebesh.\n\nDatapad also offers custom fonts, is powered by unique crystals, and now includes an Aurebesh keyboard that can be used inside and outside the app!\n\nBoth apps are ad-free and keep your data private.")
                         .font(.title)
-                        .minimumScaleFactor(0.25)
+                        .minimumScaleFactor(0.35)
                         .multilineTextAlignment(.leading)
                     
                     Spacer()
                 }
                 .padding(20)
-                
-                
                 
                 Spacer()
                 
@@ -37,9 +35,9 @@ struct SplashScreen: View {
                     Image("Datapad")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .cornerRadius(20)
                         .frame(maxWidth: 300, maxHeight: 300)
-                        .minimumScaleFactor(0.5)
-                        .cornerRadius(10)
+                        .minimumScaleFactor(0.25)
                         .padding()
                 }
                 
