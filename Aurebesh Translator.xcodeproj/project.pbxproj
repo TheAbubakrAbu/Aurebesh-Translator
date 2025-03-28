@@ -151,10 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				72AE271D2D3C9268009728F9 /* AurebeshApp.swift */,
-				72AE27212D3C9268009728F9 /* Views */,
 				72AE27172D3C9233009728F9 /* AurebeshLetters.swift */,
 				72E4928E2CCC824300A4D138 /* Settings.swift */,
 				72AE27142D3C920C009728F9 /* WatchConnectivity.swift */,
+				72AE27212D3C9268009728F9 /* Views */,
 			);
 			path = iPhone;
 			sourceTree = "<group>";
@@ -462,7 +462,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.36;
+				MARKETING_VERSION = 1.40;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -497,7 +497,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.36;
+				MARKETING_VERSION = 1.40;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -526,7 +526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.36;
+				MARKETING_VERSION = 1.40;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -558,7 +558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.36;
+				MARKETING_VERSION = 1.40;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
