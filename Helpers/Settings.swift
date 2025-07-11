@@ -1,6 +1,7 @@
 import SwiftUI
 
-class Settings: ObservableObject {
+@MainActor
+final class Settings: ObservableObject {
     private var appGroupUserDefaults: UserDefaults?
     static let shared = Settings()
     
