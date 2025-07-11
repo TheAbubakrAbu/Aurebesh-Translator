@@ -19,12 +19,13 @@ struct CustomTextEditor: UIViewRepresentable {
         tv.textContainerInset = .init(top: 15, left: 15, bottom: 15, right: 15)
         tv.textContainer.lineFragmentPadding = 0
 
+        tv.autocorrectionType = .no
+        tv.smartDashesType = .no
+        tv.smartQuotesType = .no
+        tv.smartInsertDeleteType = .no
+        
         if aurebeshMode {
-            tv.autocorrectionType = .no
             tv.spellCheckingType = .no
-            tv.smartDashesType = .no
-            tv.smartQuotesType = .no
-            tv.smartInsertDeleteType = .no
         } else {
             tv.keyboardType = .asciiCapable
             tv.autocapitalizationType = .allCharacters
