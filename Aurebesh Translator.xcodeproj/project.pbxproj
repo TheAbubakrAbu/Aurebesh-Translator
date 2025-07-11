@@ -10,6 +10,9 @@
 		720296842D419C3E009BA21E /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 720296822D419C3E009BA21E /* Aurebesh.otf */; };
 		720296852D419C3E009BA21E /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 720296822D419C3E009BA21E /* Aurebesh.otf */; };
 		7202B2B52C7F232A00CFA079 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7202B2A82C7F232800CFA079 /* Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7237663D2E1EC8DD00607A3D /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7237663C2E1EC8DD00607A3D /* KeyboardObserver.swift */; };
+		723766492E1EE53000607A3D /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723766472E1EE53000607A3D /* DefaultKeyboard.swift */; };
+		723766512E1EE5A300607A3D /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723766502E1EE5A300607A3D /* CustomTextEditor.swift */; };
 		72AE27152D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
 		72AE27162D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
 		72AE27182D3C9233009728F9 /* AurebeshLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27172D3C9233009728F9 /* AurebeshLetters.swift */; };
@@ -60,6 +63,9 @@
 		720296822D419C3E009BA21E /* Aurebesh.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aurebesh.otf; sourceTree = "<group>"; };
 		7202B2502C7DC6A200CFA079 /* iPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7202B2A82C7F232800CFA079 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7237663C2E1EC8DD00607A3D /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		723766472E1EE53000607A3D /* DefaultKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
+		723766502E1EE5A300607A3D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		72AE27142D3C920C009728F9 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
 		72AE27172D3C9233009728F9 /* AurebeshLetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshLetters.swift; sourceTree = "<group>"; };
 		72AE271C2D3C9268009728F9 /* AlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetView.swift; sourceTree = "<group>"; };
@@ -123,6 +129,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		723766402E1EC8EF00607A3D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				72AE27172D3C9233009728F9 /* AurebeshLetters.swift */,
+				72E4928E2CCC824300A4D138 /* Settings.swift */,
+				72AE27142D3C920C009728F9 /* WatchConnectivity.swift */,
+				7237663C2E1EC8DD00607A3D /* KeyboardObserver.swift */,
+				723766472E1EE53000607A3D /* DefaultKeyboard.swift */,
+				723766502E1EE5A300607A3D /* CustomTextEditor.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		726032662D42160600919FF7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,10 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				72AE271D2D3C9268009728F9 /* AurebeshApp.swift */,
-				72AE27172D3C9233009728F9 /* AurebeshLetters.swift */,
-				72E4928E2CCC824300A4D138 /* Settings.swift */,
-				72AE27142D3C920C009728F9 /* WatchConnectivity.swift */,
 				72AE27212D3C9268009728F9 /* Views */,
+				723766402E1EC8EF00607A3D /* Helpers */,
 			);
 			path = iPhone;
 			sourceTree = "<group>";
@@ -218,7 +235,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1610;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					7202B24F2C7DC6A200CFA079 = {
 						CreatedOnToolsVersion = 16.1;
@@ -275,11 +292,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				72AE27222D3C9268009728F9 /* AlphabetView.swift in Sources */,
+				723766512E1EE5A300607A3D /* CustomTextEditor.swift in Sources */,
 				72AE27232D3C9268009728F9 /* AurebeshApp.swift in Sources */,
+				7237663D2E1EC8DD00607A3D /* KeyboardObserver.swift in Sources */,
 				72AE27242D3C9268009728F9 /* LaunchScreen.swift in Sources */,
 				72AE27252D3C9268009728F9 /* SplashScreen.swift in Sources */,
 				72AE27262D3C9268009728F9 /* TranslateView.swift in Sources */,
 				72E492942CCC824300A4D138 /* CreditsView.swift in Sources */,
+				723766492E1EE53000607A3D /* DefaultKeyboard.swift in Sources */,
 				72AE27162D3C920C009728F9 /* WatchConnectivity.swift in Sources */,
 				72E492972CCC824300A4D138 /* Settings.swift in Sources */,
 				72AE27182D3C9233009728F9 /* AurebeshLetters.swift in Sources */,
@@ -349,6 +369,7 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -414,6 +435,7 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -445,7 +467,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
@@ -462,7 +483,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.40;
+				MARKETING_VERSION = 1.43;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -480,7 +501,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
@@ -497,7 +517,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.40;
+				MARKETING_VERSION = 1.43;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -514,7 +534,6 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
@@ -526,7 +545,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.40;
+				MARKETING_VERSION = 1.43;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -546,7 +565,6 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8HQMC4MQ59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
@@ -558,7 +576,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.40;
+				MARKETING_VERSION = 1.43;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

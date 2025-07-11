@@ -16,7 +16,11 @@ class KeyboardObserver: ObservableObject {
         .receive(on: DispatchQueue.main)
         .debounce(for: .milliseconds(10), scheduler: DispatchQueue.main)
         .sink { [weak self] isVisible in
-            self?.isKeyboardVisible = isVisible
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                withAnimation(.smooth) {
+                    self?.isKeyboardVisible = isVisible
+                }
+            }
         }
         .store(in: &cancellables)
     }

@@ -30,6 +30,9 @@ struct TranslateView: View {
 
 struct TranslateList: View {
     @EnvironmentObject var settings: Settings
+    #if !os(watchOS)
+    @StateObject var keyboardObserver = KeyboardObserver()
+    #endif
     
     @State var showEnglish: Bool = false
 
@@ -62,18 +65,47 @@ struct TranslateList: View {
 
         return translatedText
     }
+    
+    var outputTextBinding: Binding<String> {
+        Binding(
+            get: {
+                var translated = settings.inputText.lowercased()
 
-    var inputText: String {
-        var displayText = settings.inputText.uppercased()
+                if settings.digraph {
+                    for digraph in digraphLetters {
+                        let rx = try! NSRegularExpression(
+                            pattern: NSRegularExpression.escapedPattern(for: digraph.symbolOutput),
+                            options: [.caseInsensitive])
+                        translated = rx.stringByReplacingMatches(
+                            in: translated,
+                            options: [],
+                            range: NSRange(location: 0, length: translated.utf16.count),
+                            withTemplate: digraph.symbolFont)
+                    }
+                }
+                
+                return translated
+            },
+            set: { newValue in
+                var english = newValue
 
-        if settings.digraph && (settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina") {
-            for digraphLetter in digraphLetters {
-                let regex = try! NSRegularExpression(pattern: NSRegularExpression.escapedPattern(for: digraphLetter.symbolFont), options: [])
-                displayText = regex.stringByReplacingMatches(in: displayText, options: [], range: NSRange(location: 0, length: displayText.utf16.count), withTemplate: digraphLetter.symbolOutput)
+                if settings.digraph {
+                    for digraph in digraphLetters {
+                        let rx = try! NSRegularExpression(pattern: NSRegularExpression.escapedPattern(for: digraph.symbolFont))
+                        
+                        english = rx.stringByReplacingMatches(
+                            in: english,
+                            options: [],
+                            range: NSRange(location: 0, length: english.utf16.count),
+                            withTemplate: digraph.symbolOutput)
+                    }
+                }
+
+                withAnimation(.smooth) {
+                    settings.inputText = english.uppercased()
+                }
             }
-        }
-
-        return displayText
+        )
     }
     
     func digraphLetter(_ letter: String) -> String {
@@ -90,6 +122,7 @@ struct TranslateList: View {
     
     var body: some View {
         VStack {
+            #if os(watchOS)
             ScrollView {
                 HStack {
                     Text(settings.inputText.isEmpty ? "aurebesh" : outputText)
@@ -106,7 +139,6 @@ struct TranslateList: View {
                     .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
             )
             
-            #if os(watchOS)
             Spacer()
             
             TextField("Type here", text: $settings.inputText)
@@ -119,61 +151,26 @@ struct TranslateList: View {
                         .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
                 )
             #else
-            if settings.translatingToAurebesh {
-                if #available(iOS 16.0, *) {
-                    ZStack(alignment: .topLeading) {
-                        if settings.inputText.isEmpty {
-                            Text("TYPE HERE TO TRANSLATE")
-                                .font(.body)
-                                .foregroundColor(.secondary)
-                                .padding(.horizontal, 15)
-                                .padding(.vertical, 17)
-                        }
-                        TextEditor(text: $settings.inputText.animation(.smooth))
-                            .font(.body)
-                            .padding(.horizontal, 11)
-                            .padding(.vertical, 8)
-                            .scrollContentBackground(.hidden)
-                            .background(settings.colorAccent.color.opacity(0.1))
-                            .cornerRadius(10)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
-                            )
-                            .animation(.smooth, value: settings.translatingToAurebesh)
-                            .animation(.smooth, value: settings.inputText)
-                    }
-                } else {
-                    CustomTextView(text: $settings.inputText.animation(.smooth), placeholder: "TYPE HERE TO TRANSLATE")
-                        .padding(.horizontal, 11)
-                        .padding(.vertical, 8)
-                        .background(settings.colorAccent.color.opacity(0.1))
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
-                        )
-                        .animation(.smooth, value: settings.translatingToAurebesh)
-                        .animation(.smooth, value: settings.inputText)
-                }
-            } else {
-                ScrollView {
-                    HStack {
-                        Text(settings.inputText.isEmpty ? "ENGLISH" : inputText.uppercased())
-                            .font(.body)
-                            .foregroundColor(settings.inputText.isEmpty ? .secondary : .primary)
-                            .multilineTextAlignment(.leading)
-                            .padding()
-                        
-                        Spacer()
-                    }
-                }
+            CustomTextEditor(text: outputTextBinding, placeholder: "type here", aurebeshMode: true)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
                 )
                 .animation(.smooth, value: settings.translatingToAurebesh)
-                
+                .animation(.smooth, value: settings.inputText)
+            
+            CustomTextEditor(text: $settings.inputText, placeholder: "TYPE HERE", aurebeshMode: false)
+                .textCase(.uppercase)
+                .background(settings.colorAccent.color.opacity(0.1))
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                )
+                .animation(.smooth, value: settings.translatingToAurebesh)
+                .animation(.smooth, value: settings.inputText)
+            
+            if !settings.translatingToAurebesh && !keyboardObserver.isKeyboardVisible {
                 VStack {
                     let spacing: CGFloat = 8
                     let buttonSize = (min(UIScreen.main.bounds.width, 800) - (spacing * 8)) / 7
@@ -201,7 +198,7 @@ struct TranslateList: View {
                                     } else if letter == "AC" {
                                         settings.inputText = ""
                                     } else {
-                                        if letter != " " { settings.inputText += letter }
+                                        if letter != " " { settings.inputText += letter.uppercased() }
                                     }
                                 }
                             }) {
@@ -411,82 +408,3 @@ struct TranslateList: View {
         #endif
     }
 }
-
-#if !os(watchOS)
-struct CustomTextView: UIViewRepresentable {
-    @EnvironmentObject var settings: Settings
-    
-    @Environment(\.colorScheme) var systemColorScheme
-    
-    @Binding var text: String
-    var placeholder: String
-
-    func makeUIView(context: Context) -> UITextView {
-        let textView = UITextView()
-        textView.delegate = context.coordinator
-
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.isScrollEnabled = true
-        textView.isEditable = true
-        textView.isUserInteractionEnabled = true
-
-        updateBackgroundColor(for: textView)
-
-        if text.isEmpty {
-            textView.text = placeholder
-            textView.textColor = UIColor.lightGray
-        }
-
-        return textView
-    }
-
-    func updateUIView(_ uiView: UITextView, context: Context) {
-        if text != uiView.text {
-            uiView.text = text.isEmpty ? placeholder : text
-            uiView.textColor = text.isEmpty ? UIColor.lightGray : UIColor.label
-        }
-
-        updateBackgroundColor(for: uiView)
-    }
-
-    private func updateBackgroundColor(for textView: UITextView) {
-        if settings.colorScheme == .dark || (settings.colorScheme == nil && systemColorScheme == .dark) {
-            textView.backgroundColor = UIColor(white: 0.0, alpha: 0.05)
-        } else {
-            textView.backgroundColor = UIColor(settings.colorAccent.color.opacity(0.01))
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, UITextViewDelegate {
-        var parent: CustomTextView
-
-        init(_ textView: CustomTextView) {
-            self.parent = textView
-        }
-
-        func textViewDidBeginEditing(_ textView: UITextView) {
-            if textView.textColor == UIColor.lightGray {
-                textView.text = nil
-                textView.textColor = UIColor.label
-            }
-        }
-
-        func textViewDidEndEditing(_ textView: UITextView) {
-            if textView.text.isEmpty {
-                textView.text = parent.placeholder
-                textView.textColor = UIColor.lightGray
-            }
-        }
-
-        func textViewDidChange(_ textView: UITextView) {
-            parent.text = textView.text
-        }
-    }
-}
-
-#endif
-

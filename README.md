@@ -2,7 +2,7 @@
 
 **Apple Ecosystem App** – Available on iPhone, iPad, Mac, and Apple Watch
 
-Welcome to **Aurebesh Translator**, your Gateway to the Aurebesh Alphabet! Translate effortlessly between English and Aurebesh with a simple, free, and private experience.
+Welcome to **Aurebesh Translator**, your Gateway to the Aurebesh Alphabet! Translate effortlessly between Galactic Basic (English) and Aurebesh with a simple, free, and private experience.
 
 I was an **18-year-old** first year college student when this app was published on the App Store on **October 22, 2024**.
 
@@ -10,7 +10,7 @@ I was an **18-year-old** first year college student when this app was published 
 
 ## Features
 
-- **Effortless Translation**: Translate between English and Aurebesh with a clean and intuitive interface.
+- **Effortless Translation**: Translate between Galactic Basic (English) and Aurebesh with a clean and intuitive interface.
 - **Apple-Inspired UI**: A simple and distraction-free design for quick and easy use.
 - **Privacy-First Design**: No user data is collected, stored, or shared. The app works completely offline.
 - **Free and Ad-Free**: Enjoy a seamless experience without any fees or advertisements.

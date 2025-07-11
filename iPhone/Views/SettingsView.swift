@@ -105,7 +105,7 @@ struct SettingsList: View {
                             }
                         }
                     
-                    Text("Check out the Alphabet View to learn more about digraphs")
+                    Text("Check out the Alphabet Screen to learn more about digraphs")
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .padding(.top, 4)
