@@ -4,7 +4,7 @@
 
 Welcome to **Aurebesh Translator**, your Gateway to the Aurebesh Alphabet! Translate effortlessly between Galactic Basic (English) and Aurebesh with a simple, free, and private experience.
 
-I was an **18-year-old** first year college student when this app was published on the App Store on **October 22, 2024**.
+Created by **Abubakr Elmallah**, who was an **18-year-old** first year college student when this app was published on the App Store on **October 22, 2024**.
 
 [**Download Aurebesh Translator on the App Store here**](https://apps.apple.com/us/app/aurebesh-translator/id6670201513?platform=iphone)
 
