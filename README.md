@@ -1,6 +1,8 @@
 # Aurebesh Translator
 
-![Aurebesh Translator Logo](Resources/AurebeshTranslator.jpg)
+<p align="center">
+  <img src="Resources/AurebeshTranslator.jpg" alt="Aurebesh Translator Logo" width="150"/>
+</p>
 
 **Apple Ecosystem App** – Available on iPhone, iPad, Mac, and Apple Watch
 
