@@ -9,7 +9,7 @@ I was an **18-year-old** first year college student when this app was published 
 [**Download Aurebesh Translator on the App Store here**](https://apps.apple.com/us/app/aurebesh-translator/id6670201513?platform=iphone)
 
 <a href="https://apps.apple.com/us/app/aurebesh-translator/id6670201513?platform=iphone">
-  <img src="Resources/AurebeshTranslator.jpg" alt="Aurebesh Translator Logo" width="120"/>
+  <img src="Resources/AurebeshTranslator.jpg" alt="Aurebesh Translator Logo" width="120" style="border-radius:10px;"/>
 </a>
 
 ## Features
