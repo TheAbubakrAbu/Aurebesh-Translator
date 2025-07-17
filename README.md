@@ -1,5 +1,7 @@
 # Aurebesh Translator
 
+![Aurebesh Translator Logo](Resources/AurebeshTranslator.jpg)
+
 **Apple Ecosystem App** – Available on iPhone, iPad, Mac, and Apple Watch
 
 Welcome to **Aurebesh Translator**, your Gateway to the Aurebesh Alphabet! Translate effortlessly between Galactic Basic (English) and Aurebesh with a simple, free, and private experience.

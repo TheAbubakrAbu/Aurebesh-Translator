@@ -67,6 +67,7 @@
 		7237663C2E1EC8DD00607A3D /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		723766472E1EE53000607A3D /* DefaultKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
 		723766502E1EE5A300607A3D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
+		725D4C662E2955FB00817FFB /* AurebeshTranslator.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AurebeshTranslator.jpg; sourceTree = "<group>"; };
 		726203662E2833F300A4C615 /* AurebeshBasic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AurebeshBasic.otf; sourceTree = "<group>"; };
 		726203672E2833F300A4C615 /* AurebeshBasicDigraph.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AurebeshBasicDigraph.otf; sourceTree = "<group>"; };
 		72AE27142D3C920C009728F9 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 				72E4928B2CCC824300A4D138 /* Entitlements.entitlements */,
 				72AE272C2D3C9828009728F9 /* Info.plist */,
 				72E492882CCC824300A4D138 /* Assets.xcassets */,
+				725D4C662E2955FB00817FFB /* AurebeshTranslator.jpg */,
 				720296832D419C3E009BA21E /* Fonts */,
 			);
 			path = Resources;
