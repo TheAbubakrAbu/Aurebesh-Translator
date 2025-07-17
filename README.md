@@ -1,9 +1,5 @@
 # Aurebesh Translator
 
-<p align="center">
-  <img src="Resources/AurebeshTranslator.jpg" alt="Aurebesh Translator Logo" width="150"/>
-</p>
-
 **Apple Ecosystem App** – Available on iPhone, iPad, Mac, and Apple Watch
 
 Welcome to **Aurebesh Translator**, your Gateway to the Aurebesh Alphabet! Translate effortlessly between Galactic Basic (English) and Aurebesh with a simple, free, and private experience.
@@ -11,6 +7,8 @@ Welcome to **Aurebesh Translator**, your Gateway to the Aurebesh Alphabet! Trans
 I was an **18-year-old** first year college student when this app was published on the App Store on **October 22, 2024**.
 
 [**Download Aurebesh Translator on the App Store here**](https://apps.apple.com/us/app/aurebesh-translator/id6670201513?platform=iphone)
+
+<img src="Resources/AurebeshTranslator.jpg" alt="Aurebesh Translator Logo" width="120"/>
 
 ## Features
 
