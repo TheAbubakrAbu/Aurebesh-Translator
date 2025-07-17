@@ -35,22 +35,16 @@ struct SettingsList: View {
                         Text("Aurebesh Text Size: ")
                             .font(.subheadline)
                         
-                        Text("\(Int(settings.fontAurebeshSize))")
+                        Text("\(Int(settings.aurebeshFontSize))")
                             .font(.subheadline)
-                            .foregroundColor(settings.colorAccent.color)
+                            .foregroundColor(settings.accentColor.color)
                             .padding(.leading, -6)
                     }
                     
-                    Stepper(value: $settings.fontAurebeshSize.animation(.smooth), in: 15...50, step: 5) {}
-                        .background(settings.colorAccent.color.opacity(0.2))
-                        .foregroundColor(settings.colorAccent.color)
+                    Stepper(value: $settings.aurebeshFontSize.animation(.smooth), in: 15...50, step: 5) {}
+                        .background(settings.accentColor.color.opacity(0.2))
+                        .foregroundColor(settings.accentColor.color)
                         .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(settings.colorAccent.color, lineWidth: 5)
-                                .blur(radius: 5)
-                                .opacity(0.35)
-                        )
                         .fixedSize()
                 }
                 #else
@@ -58,20 +52,20 @@ struct SettingsList: View {
                     Text("Aurebesh Text Size: ")
                         .font(.subheadline)
                     
-                    Text("\(Int(settings.fontAurebeshSize))")
+                    Text("\(Int(settings.aurebeshFontSize))")
                         .font(.subheadline)
-                        .foregroundColor(settings.colorAccent.color)
+                        .foregroundColor(settings.accentColor.color)
                         .padding(.leading, -6)
                     
                     Spacer()
                     
-                    Stepper(value: $settings.fontAurebeshSize.animation(.smooth), in: 15...50, step: 5) {}
-                        .background(settings.colorAccent.color.opacity(0.2))
-                        .foregroundColor(settings.colorAccent.color)
+                    Stepper(value: $settings.aurebeshFontSize.animation(.smooth), in: 15...50, step: 5) {}
+                        .background(settings.accentColor.color.opacity(0.2))
+                        .foregroundColor(settings.accentColor.color)
                         .cornerRadius(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(settings.colorAccent.color, lineWidth: 5)
+                                .stroke(settings.accentColor.color, lineWidth: 5)
                                 .blur(radius: 5)
                                 .opacity(0.5)
                         )
@@ -81,13 +75,13 @@ struct SettingsList: View {
                 
                 Toggle("Use System Font Size", isOn: $settings.useSystemFontSize.animation(.smooth))
                     .font(.subheadline)
-                    .tint(settings.colorAccent.color.opacity(0.5))
+                    .tint(settings.accentColor.color.opacity(0.5))
                     .onChange(of: settings.useSystemFontSize) { useSystemFontSize in
                         if useSystemFontSize {
-                            settings.fontAurebeshSize = UIFont.preferredFont(forTextStyle: .body).pointSize * 1.5
+                            settings.aurebeshFontSize = UIFont.preferredFont(forTextStyle: .body).pointSize * 1.5
                         }
                     }
-                    .onChange(of: settings.fontAurebeshSize) { newSize in
+                    .onChange(of: settings.aurebeshFontSize) { newSize in
                         if newSize == UIFont.preferredFont(forTextStyle: .body).pointSize * 1.5 {
                             settings.useSystemFontSize = true
                         } else {
@@ -98,10 +92,10 @@ struct SettingsList: View {
                 VStack(alignment: .leading) {
                     Toggle("Use Aurebesh Digraphs", isOn: $settings.digraph.animation(.smooth))
                         .font(.subheadline)
-                        .tint(settings.colorAccent.color.opacity(0.5))
+                        .tint(settings.accentColor.color.opacity(0.5))
                         .onChange(of: settings.useSystemFontSize) { useSystemFontSize in
                             if useSystemFontSize {
-                                settings.fontAurebeshSize = UIFont.preferredFont(forTextStyle: .body).pointSize * 1.5
+                                settings.aurebeshFontSize = UIFont.preferredFont(forTextStyle: .body).pointSize * 1.5
                             }
                         }
                     
@@ -115,7 +109,7 @@ struct SettingsList: View {
             Section(header: Text("APPEARANCE SETTINGS")) {
                 Toggle("Haptic Feedback", isOn: $settings.hapticOn.animation(.smooth))
                     .font(.subheadline)
-                    .tint(settings.colorAccent.color.opacity(0.5))
+                    .tint(settings.accentColor.color.opacity(0.5))
                 
                 #if !os(watchOS)
                 Picker("Color Theme", selection: $settings.colorSchemeString.animation(.smooth)) {
@@ -124,32 +118,30 @@ struct SettingsList: View {
                     Text("Dark").tag("dark")
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .background(settings.colorAccent.color.opacity(0.2))
-                .foregroundColor(settings.colorAccent.color)
+                .background(settings.accentColor.color.opacity(0.2))
+                .foregroundColor(settings.accentColor.color)
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(settings.colorAccent.color, lineWidth: 5)
+                        .stroke(settings.accentColor.color, lineWidth: 5)
                         .blur(radius: 5)
                         .opacity(0.35)
                 )
-                #endif
                 
                 Button(action: {
                     settings.hapticFeedback()
                     
                     showingDatapad = true
                 }) {
-                    #if !os(watchOS)
                     Text("Accent colors are now exclusive to Datapad. Tap here to learn more.")
                         .font(.subheadline)
-                        .foregroundColor(settings.colorAccent.color)
-                    #else
-                    Text("Accent colors are now exclusive to Datapad.")
-                        .font(.subheadline)
-                        .foregroundColor(settings.colorAccent.color)
-                    #endif
+                        .foregroundColor(settings.accentColor.color)
                 }
+                #else
+                Link("Accent colors are now exclusive to Datapad. Tap here to learn more.", destination: URL(string: "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone")!)
+                .font(.subheadline)
+                .foregroundColor(settings.accentColor.color)
+                #endif
             }
             
             Section(header: Text("CREDITS")) {
@@ -170,7 +162,7 @@ struct SettingsList: View {
                         Text("View Credits")
                     }
                     .font(.subheadline)
-                    .foregroundColor(settings.colorAccent.color)
+                    .foregroundColor(settings.accentColor.color)
                 }
                 .sheet(isPresented: $showingCredits) {
                     CreditsView()
@@ -194,7 +186,7 @@ struct SettingsList: View {
                         Text("Leave a Review")
                     }
                     .font(.subheadline)
-                    .foregroundColor(settings.colorAccent.color)
+                    .foregroundColor(settings.accentColor.color)
                     .contextMenu {
                         Button(action: {
                             settings.hapticFeedback()
@@ -217,7 +209,7 @@ struct SettingsList: View {
                     
                     Text("ammelmallah@icloud.com")
                         .font(.subheadline)
-                        .foregroundColor(settings.colorAccent.color)
+                        .foregroundColor(settings.accentColor.color)
                         .multilineTextAlignment(.leading)
                         .padding(.leading, -4)
                 }
@@ -235,6 +227,6 @@ struct SettingsList: View {
                 #endif
             }
         }
-        .animation(.smooth(duration: 1.0), value: settings.colorAccent.color)
+        .animation(.smooth(duration: 1.0), value: settings.accentColor.color)
     }
 }

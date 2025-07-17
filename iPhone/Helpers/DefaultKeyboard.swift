@@ -368,15 +368,11 @@ struct KeyButtonView: View {
     @State var accentColor: Color
     @State var aurebeshFont: String
     var action: () -> Void
-    
-    let unsupportedCharacters: Set<Character> = ["|", "~", "•"]
-    
+        
     @State private var isPressed: Bool = false
 
     private var fontForKey: Font {
-        if aurebeshFont == "Aurebesh", let firstChar = keyLabel.first, unsupportedCharacters.contains(firstChar) {
-            return .system(size: 20)
-        } else if aurebeshFont == "Aurebesh" && (keyLabel == "1234" || keyLabel == "#+=") {
+        if keyLabel == "1234" || keyLabel == "#+=" {
             return .custom(aurebeshFont, size: 15)
         } else {
             return .custom(aurebeshFont, size: 20)
@@ -436,8 +432,8 @@ struct KeyButtonView: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                             .padding(5)
-                            .padding(.leading, aurebeshFont == "Aurebesh" ? 2 : 0)
-                            .padding(.top, aurebeshFont == "Aurebesh" ? 2 : 0)
+                            .padding(.leading, aurebeshFont.contains("Aurebesh") ? 2 : 0)
+                            .padding(.top, aurebeshFont.contains("Aurebesh") ? 2 : 0)
                     }
                 }
                 .frame(maxWidth: width, maxHeight: height)

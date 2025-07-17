@@ -45,7 +45,7 @@ struct LaunchScreen: View {
                         .frame(width: 150, height: 150)
                         .padding()
                 }
-                .foregroundColor(settings.colorAccent.color)
+                .foregroundColor(settings.accentColor.color)
                 .scaleEffect(size)
                 .opacity(opacity)
             }

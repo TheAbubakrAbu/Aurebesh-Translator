@@ -17,7 +17,7 @@ struct AlphabetView: View {
             List {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(settings.colorAccent.color, lineWidth: 1)
+                        .stroke(settings.accentColor.color, lineWidth: 1)
                         .cornerRadius(10)
                     VStack {
                         AlphabetImage()
@@ -45,38 +45,45 @@ struct AlphabetList: View {
     
     @State private var searchText: String = ""
     
-    private func columnWidth(for textStyle: UIFont.TextStyle, extra: CGFloat = 4, sample: String? = nil) -> CGFloat {
-        var sampleString = "M" as NSString
-        if let sample = sample { sampleString = sample as NSString }
-        let font = UIFont.preferredFont(forTextStyle: textStyle)
+    private func columnWidth(for textStyle: UIFont.TextStyle, extra: CGFloat = 4, sample: String? = nil, fontName: String? = nil) -> CGFloat {
+        let sampleString = (sample ?? "M") as NSString
+        let font: UIFont
+
+        if let fontName = fontName, let customFont = UIFont(name: fontName, size: UIFont.preferredFont(forTextStyle: textStyle).pointSize) {
+            font = customFont
+        } else {
+            font = UIFont.preferredFont(forTextStyle: textStyle)
+        }
+
         return ceil(sampleString.size(withAttributes: [.font: font]).width) + extra
     }
 
     private var glyphWidth: CGFloat {
-        columnWidth(for: .title3)
+        columnWidth(for: .title3, extra: 0, sample: "WI", fontName: settings.aurebeshFont)
     }
     
     private var dashWidth: CGFloat {
-        columnWidth(for: .headline, extra: 0)
+        columnWidth(for: .headline, extra: 0, sample: "-")
     }
     
     private var digraphPrefixWidth: CGFloat {
-        columnWidth(for: .title3, extra: 4, sample: "( OOO )")
+        columnWidth(for: .title3, extra: 4, sample: "(WW )")
     }
     
     private var digraphLatinWidth: CGFloat {
-        columnWidth(for: .title3, extra: 4, sample: "MM")
+        columnWidth(for: .title3, extra: 4, sample: "WW")
     }
     
     @ViewBuilder
     private func alphabetRows(_ data: [LetterData]) -> some View {
         ForEach(data) { letter in
-            HStack(alignment: .firstTextBaseline) {
+            HStack(alignment: .center) {
                 #if !os(watchOS)
-                Text(letter.symbol.lowercased())
-                    .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
-                    .foregroundColor(settings.colorAccent.color)
+                Text(letter.symbol)
+                    .font(.custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
+                    .foregroundColor(settings.accentColor.color)
                     .frame(width: glyphWidth, alignment: .center)
+                    .padding(.top, 2)
                 
                 Text("-")
                     .font(.headline)
@@ -86,7 +93,6 @@ struct AlphabetList: View {
                 Text(letter.symbol)
                     .font(.title3)
                     .foregroundColor(.primary)
-                    .padding(.top, 1)
                     .frame(width: glyphWidth, alignment: .center)
                 
                 Spacer()
@@ -95,9 +101,9 @@ struct AlphabetList: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 #else
-                Text(letter.symbol.lowercased())
-                    .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
-                    .foregroundColor(settings.colorAccent.color)
+                Text(letter.symbol)
+                    .font(.custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
+                    .foregroundColor(settings.accentColor.color)
                     .frame(width: glyphWidth, alignment: .center)
                 
                 Spacer()
@@ -105,17 +111,16 @@ struct AlphabetList: View {
                 Text(letter.symbol)
                     .font(.title3)
                     .foregroundColor(.primary)
-                    .padding(.top, 1)
                     .frame(width: glyphWidth, alignment: .center)
                 #endif
             }
             .padding(.vertical, 8)
             .padding(.horizontal, 20)
-            .background(settings.colorAccent.color.opacity(0.2))
+            .background(settings.accentColor.color.opacity(0.2))
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                    .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
             )
             #if !os(watchOS)
             .padding(.vertical, -8)
@@ -135,23 +140,35 @@ struct AlphabetList: View {
     }
 
     @ViewBuilder
-    private func alphabetRows(_ data: [DigraphData]) -> some View {
+    private func alphabetRows(_ data: [LetterData], digraph: Bool) -> some View {
         ForEach(data) { letter in
-            HStack(alignment: .firstTextBaseline) {
+            HStack(alignment: .center) {
                 #if !os(watchOS)
-                Text(letter.symbolFont)
-                    .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
-                    .foregroundColor(settings.colorAccent.color)
+                Text(letter.symbol)
+                    .font(.custom(
+                        settings.aurebeshFont.replacingOccurrences(of: "Digraph", with: "") + "Digraph",
+                        size: UIFont.preferredFont(forTextStyle: .title3).pointSize)
+                    )
+                    .foregroundColor(settings.accentColor.color)
                     .frame(width: glyphWidth, alignment: .center)
+                    .padding(.top, 2)
                 
                 HStack(spacing: 0) {
                     Text("( ")
                         .font(.headline)
                         .foregroundColor(.secondary)
 
-                    Text(letter.symbolOutput.lowercased())
-                        .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
-                        .foregroundColor(settings.colorAccent.color)
+                    let characters = Array(letter.symbol)
+
+                    if characters.count >= 2 {
+                        Text(String(characters[0]))
+                            .font(.custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
+                            .foregroundColor(settings.accentColor.color)
+                        
+                        Text(String(characters[1]))
+                            .font(.custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
+                            .foregroundColor(settings.accentColor.color)
+                    }
 
                     Text(" )")
                         .font(.headline)
@@ -164,10 +181,9 @@ struct AlphabetList: View {
                     .foregroundColor(.secondary)
                     .frame(width: dashWidth)
                 
-                Text(letter.symbolOutput)
+                Text(letter.symbol)
                     .font(.title3)
                     .foregroundColor(.primary)
-                    .padding(.top, 1)
                     .frame(width: digraphLatinWidth, alignment: .center)
                 
                 Spacer()
@@ -176,14 +192,17 @@ struct AlphabetList: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 #else
-                Text(letter.symbolFont)
-                    .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
-                    .foregroundColor(settings.colorAccent.color)
+                Text(letter.symbol)
+                    .font(.custom(
+                        settings.aurebeshFont.replacingOccurrences(of: "Digraph", with: "") + "Digraph",
+                        size: UIFont.preferredFont(forTextStyle: .title3).pointSize)
+                    )
+                    .foregroundColor(settings.accentColor.color)
                     .frame(width: glyphWidth, alignment: .center)
                 
                 Spacer()
                 
-                Text(letter.symbolOutput)
+                Text(letter.symbol)
                     .font(.title3)
                     .foregroundColor(.primary)
                     .padding(.top, 1)
@@ -192,11 +211,11 @@ struct AlphabetList: View {
             }
             .padding(.vertical, 8)
             .padding(.horizontal, 20)
-            .background(settings.colorAccent.color.opacity(0.2))
+            .background(settings.accentColor.color.opacity(0.2))
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                    .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
             )
             #if !os(watchOS)
             .padding(.vertical, -8)
@@ -222,19 +241,19 @@ struct AlphabetList: View {
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(settings.colorAccent.color, lineWidth: 1)
+                            .stroke(settings.accentColor.color, lineWidth: 1)
                             .cornerRadius(10)
                         
                         VStack {
                             Text("Aurebesh Alphabet")
                                 .font(.title3)
-                                .foregroundColor(settings.colorAccent.color)
+                                .foregroundColor(settings.accentColor.color)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
                             
-                            Text("aurebesh alphabet")
-                                .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .body).pointSize))
-                                .foregroundColor(settings.colorAccent.color)
+                            Text("Aurebesh Alphabet")
+                                .font(.custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                                .foregroundColor(settings.accentColor.color)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
                                 .padding(.bottom)
@@ -264,15 +283,15 @@ struct AlphabetList: View {
                 let filteredDigraphLetters = digraphLetters.filter {
                     searchText.isEmpty ? true :
                     $0.name.lowercased().contains(searchText.lowercased()) ||
-                    $0.symbolOutput.lowercased().contains(searchText.lowercased()) ||
-                    $0.symbolOutput.lowercased().first == searchText.lowercased().first ||
-                    $0.symbolFont.lowercased().first == searchText.lowercased().first ||
+                    $0.symbol.lowercased().contains(searchText.lowercased()) ||
+                    $0.symbol.lowercased().first == searchText.lowercased().first ||
+                    $0.symbol.lowercased().first == searchText.lowercased().first ||
                     $0.name.lowercased().first == searchText.lowercased().first
                 }
                 
-                if settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina" && !filteredDigraphLetters.isEmpty {
+                if settings.aurebeshFont.contains("Aurebesh") && !filteredDigraphLetters.isEmpty {
                     Section(header: Text("DIGRAPH LETTERS")) {
-                        alphabetRows(filteredDigraphLetters)
+                        alphabetRows(filteredDigraphLetters, digraph: true)
                     }
                 }
                 
@@ -293,7 +312,7 @@ struct AlphabetList: View {
                 }
                 
                 if !filteredSpecialLetters.isEmpty {
-                    Section(header: Text("SPECIAL LETTERS")) {
+                    Section(header: Text("SPECIAL CHARACTERS")) {
                         alphabetRows(filteredSpecialLetters)
                     }
                 }
@@ -308,7 +327,7 @@ struct AlphabetList: View {
                             Text("Aurebesh is found everywhere—on control panels, digital interfaces, signage, and official records. It unifies communication across countless interstellar worlds, cementing its place as an essential galactic script.")
                             
                             Link("Learn More about Aurebesh on Wookieepedia", destination: URL(string: "https://starwars.fandom.com/wiki/Aurebesh")!)
-                                .foregroundColor(settings.colorAccent.color)
+                                .foregroundColor(settings.accentColor.color)
                         }
                         .font(.body)
                     }
@@ -325,7 +344,7 @@ struct AlphabetList: View {
             SearchBar(text: $searchText.animation(.easeInOut))
                 .environmentObject(settings)
                 .listRowSeparator(.hidden)
-                .background(settings.colorAccent.color.opacity(0.1))
+                .background(settings.accentColor.color.opacity(0.1))
                 .padding(.horizontal, 8)
             #endif
         }
@@ -347,22 +366,27 @@ struct AlphabetImage: View {
         ], spacing: 12) {
             ForEach(aurebeshLetters) { letter in
                 VStack {
-                    Text(letter.symbol.lowercased())
-                        .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
-                        .foregroundColor(settings.colorAccent.color)
+                    Text(letter.symbol)
+                        .font(.custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
+                        .foregroundColor(settings.accentColor.color)
+                    
                     Text(letter.symbol)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .padding(.vertical, 1)
                 }
             }
-            if settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina" {
+            if settings.aurebeshFont.contains("Aurebesh") {
                 ForEach(digraphLetters) { letter in
                     VStack {
-                        Text(letter.symbolFont)
-                            .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
-                            .foregroundColor(settings.colorAccent.color)
-                        Text(letter.symbolOutput)
+                        Text(letter.symbol)
+                            .font(.custom(
+                                settings.aurebeshFont.replacingOccurrences(of: "Digraph", with: "") + "Digraph",
+                                size: UIFont.preferredFont(forTextStyle: .title3).pointSize)
+                            )
+                            .foregroundColor(settings.accentColor.color)
+                        
+                        Text(letter.symbol)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .padding(.vertical, 1)
@@ -378,22 +402,27 @@ struct AlphabetImage: View {
         ], spacing: 12) {
             ForEach(aurebeshLetters) { letter in
                 VStack {
-                    Text(letter.symbol.lowercased())
-                        .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
-                        .foregroundColor(settings.colorAccent.color)
+                    Text(letter.symbol)
+                        .font(.custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
+                        .foregroundColor(settings.accentColor.color)
+                    
                     Text(letter.symbol)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .padding(.vertical, 1)
                 }
             }
-            if settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina" {
+            if settings.aurebeshFont.contains("Aurebesh") {
                 ForEach(digraphLetters) { letter in
                     VStack {
-                        Text(letter.symbolFont)
-                            .font(.custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .title3).pointSize))
-                            .foregroundColor(settings.colorAccent.color)
-                        Text(letter.symbolOutput)
+                        Text(letter.symbol)
+                            .font(.custom(
+                                settings.aurebeshFont.replacingOccurrences(of: "Digraph", with: "") + "Digraph",
+                                size: UIFont.preferredFont(forTextStyle: .title3).pointSize)
+                            )
+                            .foregroundColor(settings.accentColor.color)
+                        
+                        Text(letter.symbol)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .padding(.vertical, 1)

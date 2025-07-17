@@ -1,23 +1,25 @@
 import SwiftUI
 
 final class Settings: ObservableObject {
-    private var appGroupUserDefaults: UserDefaults?
     static let shared = Settings()
     
-    @Published var colorAccent: AccentColor {
-        didSet { appGroupUserDefaults?.setValue(colorAccent.rawValue, forKey: "theColorAccent") }
+    @AppStorage("accentColor") private var storedAccentRaw: String = AccentColor.gold.rawValue
+        
+    @Published var accentColor: AccentColor = .gold {
+        didSet { storedAccentRaw = accentColor.rawValue }
     }
     
-    @Published var digraph: Bool {
-        didSet { appGroupUserDefaults?.setValue(digraph, forKey: "digraph") }
+    private init() {
+        accentColor = AccentColor(rawValue: storedAccentRaw) ?? .gold
     }
     
+    @AppStorage("digraph") var digraph: Bool = true
     @AppStorage("hapticOn") var hapticOn: Bool = true
     @AppStorage("translatingToAurebesh") var translatingToAurebesh: Bool = false
-    @AppStorage("fontAurebeshSize") var fontAurebeshSize: Double = UIFont.preferredFont(forTextStyle: .body).pointSize * 1.6
+    @AppStorage("aurebeshFontSize") var aurebeshFontSize: Double = UIFont.preferredFont(forTextStyle: .body).pointSize * 1.6
     @AppStorage("useSystemFontSize") var useSystemFontSize: Bool = true
     @AppStorage("firstLaunch") var firstLaunch: Bool = true
-    @AppStorage("fontAurebesh") var fontAurebesh: String = "Aurebesh"
+    @AppStorage("aurebeshFont") var aurebeshFont: String = "AurebeshBasicDigraph"
     @AppStorage("colorSchemeString") var colorSchemeString: String = "system"
     
     var colorScheme: ColorScheme? {
@@ -38,31 +40,18 @@ final class Settings: ObservableObject {
     }
     
     @Published var inputText: String = ""
-        
-    init() {
-        self.appGroupUserDefaults = UserDefaults(suiteName: "group.com.Datapad.AppGroup")
-
-        let defaults: [String: Any] = [
-            "colorAccent": "gold",
-            "digraph": true,
-        ]
-        appGroupUserDefaults?.register(defaults: defaults)
-
-        self.colorAccent = AccentColor(rawValue: appGroupUserDefaults?.string(forKey: "theColorAccent") ?? "gold") ?? .gold
-        self.digraph = appGroupUserDefaults?.bool(forKey: "digraph") ?? true
-    }
     
     func dictionaryRepresentation() -> [String: Any] {
         return [
-            "colorAccent": self.colorAccent.rawValue,
+            "accentColor": self.accentColor.rawValue,
             "digraph": self.digraph,
         ]
     }
 
     func update(from dict: [String: Any]) {
-        if let colorAccent = dict["colorAccent"] as? String,
-           let colorAccentValue = AccentColor(rawValue: colorAccent) {
-            self.colorAccent = colorAccentValue
+        if let accentColor = dict["accentColor"] as? String,
+           let accentColorValue = AccentColor(rawValue: accentColor) {
+            self.accentColor = accentColorValue
         }
         if let digraph = dict["digraph"] as? Bool {
             self.digraph = digraph
@@ -113,4 +102,4 @@ enum AccentColor: String, CaseIterable, Identifiable {
     }
 }
 
-let colorAccents: [AccentColor] = AccentColor.allCases
+let accentColors: [AccentColor] = AccentColor.allCases

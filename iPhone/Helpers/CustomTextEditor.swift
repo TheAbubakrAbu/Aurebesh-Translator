@@ -4,84 +4,134 @@ struct CustomTextEditor: UIViewRepresentable {
     @EnvironmentObject var settings: Settings
 
     @Binding var text: String
-    let placeholder: String
     let aurebeshMode: Bool
+    let autocorrect: Bool
+    
+    init(text: Binding<String>, aurebeshMode: Bool, autocorrect: Bool = true) {
+        self._text = text
+        self.aurebeshMode = aurebeshMode
+        self.autocorrect = autocorrect
+    }
 
     func makeUIView(context: Context) -> UITextView {
         let tv = UITextView()
         tv.delegate = context.coordinator
-        
+
         tv.isScrollEnabled = true
-        tv.isUserInteractionEnabled = true
         tv.alwaysBounceVertical = true
         tv.keyboardDismissMode = .onDrag
         tv.backgroundColor = .clear
-        tv.textContainerInset = .init(top: 15, left: 15, bottom: 15, right: 15)
-        tv.textContainer.lineFragmentPadding = 0
-
-        tv.autocorrectionType = .no
-        tv.smartDashesType = .no
-        tv.smartQuotesType = .no
-        tv.smartInsertDeleteType = .no
         
-        if aurebeshMode {
+        tv.textContainerInset = calculatedInsets()
+        
+        tv.textContainer.lineFragmentPadding = 0
+        tv.inputAssistantItem.leadingBarButtonGroups = []
+        tv.inputAssistantItem.trailingBarButtonGroups = []
+        
+        if !autocorrect {
+            tv.autocorrectionType = .no
             tv.spellCheckingType = .no
-        } else {
-            tv.keyboardType = .asciiCapable
-            tv.autocapitalizationType = .allCharacters
+            tv.autocapitalizationType = .none
+            tv.smartQuotesType = .no
+            tv.smartDashesType = .no
+            tv.smartInsertDeleteType = .no
         }
+        
+        let ph = UILabel()
+        ph.text = placeholderFitting(in: tv)
+        ph.textColor = UIColor(.secondary)
+        ph.numberOfLines = 0
+        ph.adjustsFontSizeToFitWidth = true
+        ph.minimumScaleFactor = 0.6
+        ph.isUserInteractionEnabled = false
+        ph.translatesAutoresizingMaskIntoConstraints = false
+
+        tv.addSubview(ph)
+        
+        let topConstraint = ph.topAnchor.constraint(equalTo: tv.topAnchor, constant: tv.textContainerInset.top)
+        context.coordinator.placeholderTopConstraint = topConstraint
+
+        NSLayoutConstraint.activate([
+            ph.leadingAnchor.constraint(equalTo: tv.leadingAnchor, constant: tv.textContainerInset.left),
+            ph.trailingAnchor.constraint(equalTo: tv.trailingAnchor, constant: -tv.textContainerInset.right),
+            topConstraint
+        ])
+        
+        context.coordinator.placeholder = ph
+        ph.isHidden = !text.isEmpty
+        ph.font = editorFont()
 
         applyAppearance(to: tv)
         rebuildInputView(for: tv)
-
-        tv.inputAssistantItem.leadingBarButtonGroups  = []
-        tv.inputAssistantItem.trailingBarButtonGroups = []
-
+        
         return tv
     }
 
     func updateUIView(_ tv: UITextView, context: Context) {
-        if text.isEmpty && !tv.isFirstResponder {
-            tv.text = placeholder
-            tv.textColor = UIColor(.secondary)
-            return
-        } else {
-            tv.textColor = aurebeshMode ? UIColor(settings.colorAccent.color) : UIColor(.primary)
-        }
+        let wantedFont = editorFont()
 
-        let oldText = tv.text ?? ""
-        guard oldText != text else { return }
-        
-        let oldCaret = tv.selectedTextRange?.start
-        let oldIndex = oldCaret.flatMap { tv.offset(from: tv.beginningOfDocument, to: $0) } ?? 0
-
-        let delta = text.count - oldText.count
-
-        tv.text = text
-        
-        let newOffset = max(0, oldIndex + delta)
-        if let newPos = tv.position(from: tv.beginningOfDocument, offset: newOffset) {
-            tv.selectedTextRange = tv.textRange(from: newPos, to: newPos)
+        if context.coordinator.cachedAurebeshMode != aurebeshMode || context.coordinator.cachedFontName != settings.aurebeshFont || context.coordinator.cachedFontSize != settings.aurebeshFontSize {
+            context.coordinator.cachedAurebeshMode = aurebeshMode
+            context.coordinator.cachedFontName = settings.aurebeshFont
+            context.coordinator.cachedFontSize = settings.aurebeshFontSize
+            rebuildInputView(for: tv)
         }
         
-        let wanted = editorFont()
-        if tv.font?.fontName != wanted.fontName ||
-           tv.font?.pointSize != wanted.pointSize {
-            tv.font = wanted
+        let newInsets = calculatedInsets()
+        if tv.textContainerInset != newInsets {
+            tv.textContainerInset = newInsets
+            context.coordinator.placeholderTopConstraint?.constant = newInsets.top
         }
+
+        if tv.font?.fontName != wantedFont.fontName ||
+           abs(tv.font?.pointSize ?? 0 - wantedFont.pointSize) > 0.5 {
+            tv.font = wantedFont
+        }
+
+        tv.textColor = aurebeshMode ? UIColor(settings.accentColor.color) : UIColor(.primary)
+        
+        if let ph = context.coordinator.placeholder {
+            tv.layoutIfNeeded()
+            ph.text = placeholderFitting(in: tv)
+
+            DispatchQueue.main.async { [weak tv, weak ph] in
+                if let tv = tv, let ph = ph {
+                    ph.text = placeholderFitting(in: tv)
+                }
+            }
+
+            ph.font = wantedFont
+            ph.textColor = UIColor(.secondary)
+            ph.isHidden = !text.isEmpty
+        }
+
+        if tv.text != text { tv.text = text }
     }
 
     private func editorFont() -> UIFont {
-        if aurebeshMode {
-            return UIFont(name: settings.fontAurebesh, size: settings.fontAurebeshSize)!
+        if aurebeshMode && !autocorrect {
+            let fontName: String
+            if settings.aurebeshFont.contains("Aurebesh") && !settings.aurebeshFont.contains("Digraph") {
+                fontName = settings.aurebeshFont + "Digraph"
+            } else {
+                fontName = settings.aurebeshFont
+            }
+
+            let size = UIFont.preferredFont(forTextStyle: .title1).pointSize
+            return UIFont(name: fontName, size: size)!
+        } else if aurebeshMode {
+            return UIFont(name: settings.aurebeshFont, size: settings.aurebeshFontSize)!
         } else {
-            return UIFont.preferredFont(forTextStyle: .body)
+              return UIFont.preferredFont(forTextStyle: .body)
+            
+             // let size = UIFont.preferredFont(forTextStyle: .body).pointSize * 1.1
+             // return UIFont(name: settings.englishFont, size: size)!
         }
     }
 
     private func applyAppearance(to tv: UITextView) {
         tv.font = editorFont()
-        tv.textColor = text.isEmpty ? UIColor(.secondary) : aurebeshMode ? UIColor(settings.colorAccent.color) : UIColor(.primary)
+        tv.textColor = text.isEmpty ? UIColor(.secondary) : aurebeshMode ? UIColor(settings.accentColor.color) : UIColor(.primary)
     }
 
     private func rebuildInputView(for tv: UITextView) {
@@ -95,14 +145,46 @@ struct CustomTextEditor: UIViewRepresentable {
                     onDeletePress:{ [weak tv] in tv?.deleteBackward()  },
                     onSpacePress: { [weak tv] in tv?.insertText(" ")   },
                     onReturnPress:{ [weak tv] in tv?.insertText("\n")  },
-                    accentColor: settings.colorAccent.color,
-                    aurebeshFont: settings.fontAurebesh
+                    accentColor: settings.accentColor.color,
+                    aurebeshFont: settings.aurebeshFont
                 )
+                .id(settings.aurebeshFont)
             }
         } else {
             tv.inputView = nil
         }
         tv.reloadInputViews()
+    }
+    
+    private func placeholderFitting(in textView: UITextView) -> String {
+        let base = "Type here"
+        
+        guard aurebeshMode else { return base }
+        
+        let font = editorFont()
+        
+        let usableW = textView.bounds.width - textView.textContainerInset.left - textView.textContainerInset.right
+        
+        let singleLine = (base as NSString).boundingRect(
+            with: .zero,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: font],
+            context: nil).width
+        
+        return singleLine > usableW ? "Type\nhere" : base
+    }
+    
+    private func calculatedInsets() -> UIEdgeInsets {
+        let top: CGFloat = aurebeshMode
+            ? settings.aurebeshFont.contains("AurebeshNexus") ? 20
+            : settings.aurebeshFont.contains("AurebeshDroid") ? 15
+            : settings.aurebeshFont.contains("AurebeshPixel") ? 4
+            : settings.aurebeshFont.contains("AurebeshCantina") || settings.aurebeshFont.contains("AurebeshCore") ? 9
+            : settings.aurebeshFont.contains("Mando") ? 16
+            : 12
+            : 12
+
+        return UIEdgeInsets(top: top, left: 13, bottom: top, right: 13)
     }
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
@@ -110,49 +192,25 @@ struct CustomTextEditor: UIViewRepresentable {
     class Coordinator: NSObject, UITextViewDelegate {
         let parent: CustomTextEditor
         var cachedAurebeshMode: Bool
+        var cachedFontName: String
+        var cachedFontSize: CGFloat
+        weak var placeholder: UILabel?
+        var placeholderTopConstraint: NSLayoutConstraint?
 
         init(_ parent: CustomTextEditor) {
             self.parent = parent
             self.cachedAurebeshMode = parent.aurebeshMode
-        }
-
-        func textView(_ tv: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            guard parent.aurebeshMode == false else { return true }
-            
-            let upper = text.uppercased()
-            
-            if let swiftRange = Range(range, in: tv.text) {
-                var newString = tv.text!
-                newString.replaceSubrange(swiftRange, with: upper)
-                
-                parent.text = newString
-                tv.text = newString
-
-                if let pos = tv.position(from: tv.beginningOfDocument, offset: range.location + upper.count) {
-                    tv.selectedTextRange = tv.textRange(from: pos, to: pos)
-                }
-            }
-
-            return false
-        }
-        
-        func textViewDidBeginEditing(_ tv: UITextView) {
-            if tv.textColor == UIColor(.secondary) {
-                tv.text = ""
-                tv.textColor = parent.aurebeshMode ? UIColor(parent.settings.colorAccent.color) : UIColor(.primary)
-            }
-        }
-
-        func textViewDidEndEditing(_ tv: UITextView) {
-            if tv.text.isEmpty {
-                tv.text = parent.placeholder
-                tv.textColor = UIColor(.secondary)
-            } else {
-                parent.text  = tv.text
-            }
+            self.cachedFontName = parent.settings.aurebeshFont
+            self.cachedFontSize = parent.settings.aurebeshFontSize
         }
 
         func textViewDidChange(_ tv: UITextView) {
+            parent.text = tv.text
+            placeholder?.isHidden = !tv.text.isEmpty
+        }
+
+        func textViewDidEndEditing(_ tv: UITextView) {
+            placeholder?.isHidden = !tv.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             parent.text = tv.text
         }
     }
@@ -161,7 +219,7 @@ struct CustomTextEditor: UIViewRepresentable {
 extension UITextView {
     open override var inputAssistantItem: UITextInputAssistantItem {
         let item = super.inputAssistantItem
-        item.leadingBarButtonGroups  = []
+        item.leadingBarButtonGroups = []
         item.trailingBarButtonGroups = []
         return item
     }

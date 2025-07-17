@@ -22,7 +22,7 @@ struct CreditsView: View {
                         Spacer()
                         
                         Link("abubakrelmallah.com", destination: URL(string: "https://abubakrelmallah.com/")!)
-                            .foregroundColor(settings.colorAccent.color)
+                            .foregroundColor(settings.accentColor.color)
                             .font(.headline)
                             .multilineTextAlignment(.center)
                             .padding(.vertical, 4)
@@ -42,7 +42,7 @@ struct CreditsView: View {
                     }
                     
                     Divider()
-                        .background(settings.colorAccent.color)
+                        .background(settings.accentColor.color)
                         .padding(.trailing, -100)
                 }
                 .listRowSeparator(.hidden)
@@ -50,7 +50,7 @@ struct CreditsView: View {
                 Section {
                     Link("Check out Datapad | Aurebesh Translator, featuring a galactic-themed UI, widgets, and support for three types of Aurebesh", destination: URL(string: "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone")!)
                         .font(.body)
-                        .foregroundColor(settings.colorAccent.color)
+                        .foregroundColor(settings.accentColor.color)
                         .contextMenu {
                             Button(action: {
                                 UIPasteboard.general.string = "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone"
@@ -64,7 +64,7 @@ struct CreditsView: View {
                     
                     Link("View the first rendition of Datapad/Aurebesh Translator that I made when I was fifteen in AP Computer Science Principles as a sophomore (2021) via code.org", destination: URL(string: "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc")!)
                         .font(.body)
-                        .foregroundColor(settings.colorAccent.color)
+                        .foregroundColor(settings.accentColor.color)
                         .contextMenu {
                             Button(action: {
                                 UIPasteboard.general.string = "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc"
@@ -78,7 +78,7 @@ struct CreditsView: View {
                     
                     Link("View the source code: github.com/TheAbubakrAbu/Aurebesh-Translator", destination: URL(string: "https://github.com/TheAbubakrAbu/Aurebesh-Translator")!)
                         .font(.body)
-                        .foregroundColor(settings.colorAccent.color)
+                        .foregroundColor(settings.accentColor.color)
                         .contextMenu {
                             Button(action: {
                                 UIPasteboard.general.string = "https://github.com/TheAbubakrAbu/Aurebesh-Translator"
@@ -98,7 +98,7 @@ struct CreditsView: View {
                 
                 Section(header: Text("CREDITS")) {
                     Link("Credit for the Aurebesh font goes to Pixel Sagas", destination: URL(string: "https://www.fonts4free.net/aurebesh-font.html")!)
-                        .foregroundColor(settings.colorAccent.color)
+                        .foregroundColor(settings.accentColor.color)
                         .font(.body)
                 }
                 
@@ -116,8 +116,8 @@ struct CreditsView: View {
             }
             .listStyle(.plain)
             .navigationBarTitleDisplayMode(.inline)
-            .accentColor(settings.colorAccent.color)
-            .tint(settings.colorAccent.color)
+            .accentColor(settings.accentColor.color)
+            .tint(settings.accentColor.color)
             .navigationTitle("Credits")
         }
     }

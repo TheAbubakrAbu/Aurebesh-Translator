@@ -46,8 +46,8 @@ struct AurebeshTranslatorApp: App {
                 }
             }
             .environmentObject(settings)
-            .accentColor(settings.colorAccent.color)
-            .tint(settings.colorAccent.color)
+            .accentColor(settings.accentColor.color)
+            .tint(settings.accentColor.color)
             .preferredColorScheme(settings.colorScheme)
             .transition(.opacity)
             .animation(.easeInOut, value: settings.firstLaunch)
@@ -81,11 +81,16 @@ struct AurebeshTranslatorApp: App {
                 }
             }
         }
-        .onChange(of: settings.colorAccent) { _ in
+        .onChange(of: settings.accentColor) { _ in
             sendMessageToWatch()
         }
-        .onChange(of: settings.digraph) { _ in
+        .onChange(of: settings.digraph) { on in
             sendMessageToWatch()
+            
+            withAnimation(.smooth) {
+                let base = settings.aurebeshFont.replacingOccurrences(of: "Digraph", with: "")
+                settings.aurebeshFont = base + (on ? "Digraph" : "")
+            }
         }
     }
     

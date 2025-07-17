@@ -4,7 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Aurebesh.otf</string>
+		<string>AurebeshBasic.otf</string>
+		<string>AurebeshBasicDigraph.otf</string>
 	</array>
 </dict>
 </plist>

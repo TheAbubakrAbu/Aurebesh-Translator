@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		720296842D419C3E009BA21E /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 720296822D419C3E009BA21E /* Aurebesh.otf */; };
-		720296852D419C3E009BA21E /* Aurebesh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 720296822D419C3E009BA21E /* Aurebesh.otf */; };
 		7202B2B52C7F232A00CFA079 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7202B2A82C7F232800CFA079 /* Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7237663D2E1EC8DD00607A3D /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7237663C2E1EC8DD00607A3D /* KeyboardObserver.swift */; };
 		723766492E1EE53000607A3D /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723766472E1EE53000607A3D /* DefaultKeyboard.swift */; };
 		723766512E1EE5A300607A3D /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723766502E1EE5A300607A3D /* CustomTextEditor.swift */; };
+		726203682E2833F300A4C615 /* AurebeshBasicDigraph.otf in Resources */ = {isa = PBXBuildFile; fileRef = 726203672E2833F300A4C615 /* AurebeshBasicDigraph.otf */; };
+		726203692E2833F300A4C615 /* AurebeshBasic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 726203662E2833F300A4C615 /* AurebeshBasic.otf */; };
+		7262036A2E2833F300A4C615 /* AurebeshBasicDigraph.otf in Resources */ = {isa = PBXBuildFile; fileRef = 726203672E2833F300A4C615 /* AurebeshBasicDigraph.otf */; };
+		7262036B2E2833F300A4C615 /* AurebeshBasic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 726203662E2833F300A4C615 /* AurebeshBasic.otf */; };
 		72AE27152D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
 		72AE27162D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
 		72AE27182D3C9233009728F9 /* AurebeshLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27172D3C9233009728F9 /* AurebeshLetters.swift */; };
@@ -60,12 +62,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		720296822D419C3E009BA21E /* Aurebesh.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aurebesh.otf; sourceTree = "<group>"; };
 		7202B2502C7DC6A200CFA079 /* iPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7202B2A82C7F232800CFA079 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7237663C2E1EC8DD00607A3D /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		723766472E1EE53000607A3D /* DefaultKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
 		723766502E1EE5A300607A3D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
+		726203662E2833F300A4C615 /* AurebeshBasic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AurebeshBasic.otf; sourceTree = "<group>"; };
+		726203672E2833F300A4C615 /* AurebeshBasicDigraph.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AurebeshBasicDigraph.otf; sourceTree = "<group>"; };
 		72AE27142D3C920C009728F9 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
 		72AE27172D3C9233009728F9 /* AurebeshLetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshLetters.swift; sourceTree = "<group>"; };
 		72AE271C2D3C9268009728F9 /* AlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetView.swift; sourceTree = "<group>"; };
@@ -104,7 +107,8 @@
 		720296832D419C3E009BA21E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				720296822D419C3E009BA21E /* Aurebesh.otf */,
+				726203662E2833F300A4C615 /* AurebeshBasic.otf */,
+				726203672E2833F300A4C615 /* AurebeshBasicDigraph.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -270,8 +274,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7262036A2E2833F300A4C615 /* AurebeshBasicDigraph.otf in Resources */,
+				7262036B2E2833F300A4C615 /* AurebeshBasic.otf in Resources */,
 				72E4929C2CCC824300A4D138 /* Assets.xcassets in Resources */,
-				720296842D419C3E009BA21E /* Aurebesh.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,8 +284,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				726203682E2833F300A4C615 /* AurebeshBasicDigraph.otf in Resources */,
+				726203692E2833F300A4C615 /* AurebeshBasic.otf in Resources */,
 				72E492A32CCC824300A4D138 /* Assets.xcassets in Resources */,
-				720296852D419C3E009BA21E /* Aurebesh.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

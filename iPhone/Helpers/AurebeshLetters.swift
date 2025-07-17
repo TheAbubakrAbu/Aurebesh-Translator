@@ -6,13 +6,6 @@ struct LetterData: Identifiable {
     let symbol: String
 }
 
-struct DigraphData: Identifiable {
-    let id = UUID()
-    let name: String
-    let symbolFont: String
-    let symbolOutput: String
-}
-
 let aurebeshLetters: [LetterData] = [
     LetterData(name: "Aurek", symbol: "A"),
     LetterData(name: "Besh", symbol: "B"),
@@ -42,15 +35,15 @@ let aurebeshLetters: [LetterData] = [
     LetterData(name: "Zerek", symbol: "Z"),
 ]
 
-let digraphLetters: [DigraphData] = [
-    DigraphData(name: "Cherek", symbolFont: "ç", symbolOutput: "CH"),
-    DigraphData(name: "Enth", symbolFont: "æ", symbolOutput: "AE"),
-    DigraphData(name: "Onith", symbolFont: "Ë", symbolOutput: "EO"),
-    DigraphData(name: "Krenth", symbolFont: "þ", symbolOutput: "KH"),
-    DigraphData(name: "Nen", symbolFont: "ñ", symbolOutput: "NG"),
-    DigraphData(name: "Orenth", symbolFont: "ø", symbolOutput: "OO"),
-    DigraphData(name: "Shen", symbolFont: "ß", symbolOutput: "SH"),
-    DigraphData(name: "Thesh", symbolFont: "Æ", symbolOutput: "TH"),
+let digraphLetters: [LetterData] = [
+    LetterData(name: "Cherek", symbol: "CH"),
+    LetterData(name: "Enth", symbol: "AE"),
+    LetterData(name: "Onith", symbol: "EO"),
+    LetterData(name: "Krenth", symbol: "KH"),
+    LetterData(name: "Nen", symbol: "NG"),
+    LetterData(name: "Orenth", symbol: "OO"),
+    LetterData(name: "Shen", symbol: "SH"),
+    LetterData(name: "Thesh", symbol: "TH"),
 ]
 
 let numberLetters: [LetterData] = [

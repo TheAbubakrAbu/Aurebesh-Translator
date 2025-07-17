@@ -45,79 +45,12 @@ struct TranslateList: View {
     var buttonText: String {
         switch buttonState {
         case .normal:
-            return "NORMAL"
+            return "Normal"
         case .digraph:
-            return "DIGRAPH"
+            return "Digraph"
         case .special:
-            return "SPECIAL"
+            return "Special"
         }
-    }
-        
-    var outputText: String {
-        var translatedText = settings.inputText.lowercased()
-
-        if settings.digraph && (settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina") {
-            for digraphLetter in digraphLetters {
-                let regex = try! NSRegularExpression(pattern: NSRegularExpression.escapedPattern(for: digraphLetter.symbolOutput.lowercased()), options: [])
-                translatedText = regex.stringByReplacingMatches(in: translatedText, options: [], range: NSRange(location: 0, length: translatedText.utf16.count), withTemplate: digraphLetter.symbolFont)
-            }
-        }
-
-        return translatedText
-    }
-    
-    var outputTextBinding: Binding<String> {
-        Binding(
-            get: {
-                var translated = settings.inputText.lowercased()
-
-                if settings.digraph {
-                    for digraph in digraphLetters {
-                        let rx = try! NSRegularExpression(
-                            pattern: NSRegularExpression.escapedPattern(for: digraph.symbolOutput),
-                            options: [.caseInsensitive])
-                        translated = rx.stringByReplacingMatches(
-                            in: translated,
-                            options: [],
-                            range: NSRange(location: 0, length: translated.utf16.count),
-                            withTemplate: digraph.symbolFont)
-                    }
-                }
-                
-                return translated
-            },
-            set: { newValue in
-                var english = newValue
-
-                if settings.digraph {
-                    for digraph in digraphLetters {
-                        let rx = try! NSRegularExpression(pattern: NSRegularExpression.escapedPattern(for: digraph.symbolFont))
-                        
-                        english = rx.stringByReplacingMatches(
-                            in: english,
-                            options: [],
-                            range: NSRange(location: 0, length: english.utf16.count),
-                            withTemplate: digraph.symbolOutput)
-                    }
-                }
-
-                withAnimation(.smooth) {
-                    settings.inputText = english.uppercased()
-                }
-            }
-        )
-    }
-    
-    func digraphLetter(_ letter: String) -> String {
-        if settings.digraph && (settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina") {
-            for digraphLetter in digraphLetters {
-                if letter == digraphLetter.symbolOutput.lowercased() {
-                    return digraphLetter.symbolFont
-                }
-            }
-        }
-        if letter == " " { return "" }
-        return letter
     }
     
     var body: some View {
@@ -125,9 +58,9 @@ struct TranslateList: View {
             #if os(watchOS)
             ScrollView {
                 HStack {
-                    Text(settings.inputText.isEmpty ? "aurebesh" : outputText)
-                        .font(.custom(settings.fontAurebesh, size: settings.fontAurebeshSize))
-                        .foregroundColor(settings.inputText.isEmpty ? .secondary : settings.colorAccent.color)
+                    Text(settings.inputText.isEmpty ? "aurebesh" : settings.inputText)
+                        .font(.custom(settings.aurebeshFont, size: settings.aurebeshFontSize))
+                        .foregroundColor(settings.inputText.isEmpty ? .secondary : settings.accentColor.color)
                         .multilineTextAlignment(.leading)
                         .padding()
                     
@@ -136,7 +69,7 @@ struct TranslateList: View {
             }
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                    .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
             )
             
             Spacer()
@@ -145,27 +78,27 @@ struct TranslateList: View {
                 .multilineTextAlignment(.leading)
                 .font(.body)
                 .cornerRadius(10)
-                .background(settings.colorAccent.color.opacity(0.1))
+                .background(settings.accentColor.color.opacity(0.1))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                        .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
                 )
             #else
-            CustomTextEditor(text: outputTextBinding, placeholder: "type here", aurebeshMode: true)
+            CustomTextEditor(text: $settings.inputText, aurebeshMode: true)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                        .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
                 )
                 .animation(.smooth, value: settings.translatingToAurebesh)
                 .animation(.smooth, value: settings.inputText)
             
-            CustomTextEditor(text: $settings.inputText, placeholder: "TYPE HERE", aurebeshMode: false)
+            CustomTextEditor(text: $settings.inputText, aurebeshMode: false)
                 .textCase(.uppercase)
-                .background(settings.colorAccent.color.opacity(0.1))
+                .background(settings.accentColor.color.opacity(0.1))
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                        .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
                 )
                 .animation(.smooth, value: settings.translatingToAurebesh)
                 .animation(.smooth, value: settings.inputText)
@@ -209,20 +142,20 @@ struct TranslateList: View {
                                         if letter == "Delete" {
                                             Image(systemName: "delete.backward.fill")
                                                 .font(.title)
-                                                .foregroundColor(settings.colorAccent.color)
+                                                .foregroundColor(settings.accentColor.color)
                                         } else if letter == "AC" {
                                             Image(systemName: "xmark.app.fill")
                                                 .font(.title)
-                                                .foregroundColor(settings.colorAccent.color)
+                                                .foregroundColor(settings.accentColor.color)
                                         } else {
-                                            Text(showEnglish ? letter.uppercased() : buttonState == .digraph ? digraphLetter(letter) : letter)
+                                            Text(showEnglish ? letter.uppercased() : letter)
                                                 .contentShape(Rectangle())
-                                                .padding(.leading, settings.fontAurebesh == "Aurebesh" && !showEnglish ? 2 : 0)
-                                                .padding(.top, settings.fontAurebesh == "Aurebesh" && !showEnglish ? 2 : 0)
+                                                .padding(.leading, settings.aurebeshFont.contains("AurebeshBasic") && !showEnglish ? 2 : 0)
+                                                .padding(.top, settings.aurebeshFont.contains("AurebeshBasic") && !showEnglish ? 2 : 0)
                                                 .foregroundColor(.primary)
                                                 .font(showEnglish
                                                       ? .largeTitle
-                                                      : .custom(settings.fontAurebesh, size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize)
+                                                      : .custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize)
                                                 )
                                         }
                                     }
@@ -232,11 +165,11 @@ struct TranslateList: View {
                                 }
                             }
                             .frame(width: buttonSize, height: buttonSize)
-                            .background(settings.colorAccent.color.opacity(0.1))
+                            .background(settings.accentColor.color.opacity(0.1))
                             .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                                    .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
                             )
                             .hoverEffect(.highlight)
                         }
@@ -250,7 +183,7 @@ struct TranslateList: View {
                             withAnimation(.smooth) {
                                 switch buttonState {
                                 case .normal:
-                                    if settings.digraph && (settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina") {
+                                    if settings.digraph && (settings.aurebeshFont.contains("Aurebesh")) {
                                         buttonState = .digraph
                                     } else {
                                         buttonState = .special
@@ -269,20 +202,20 @@ struct TranslateList: View {
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.25)
                                 .frame(width: buttonSize * 2 + spacing, height: buttonSize)
-                                .background(settings.colorAccent.color.opacity(0.2))
-                                .foregroundColor(settings.colorAccent.color)
+                                .background(settings.accentColor.color.opacity(0.2))
+                                .foregroundColor(settings.accentColor.color)
                                 .cornerRadius(10)
-                                .shadow(color: settings.colorAccent.color.opacity(0.25), radius: 10, x: 0.0, y: 0.0)
+                                .shadow(color: settings.accentColor.color.opacity(0.25), radius: 10, x: 0.0, y: 0.0)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(settings.colorAccent.color, lineWidth: 5)
-                                        .shadow(color: settings.colorAccent.color, radius: 10, x: 0.0, y: 0.0)
+                                        .stroke(settings.accentColor.color, lineWidth: 5)
+                                        .shadow(color: settings.accentColor.color, radius: 10, x: 0.0, y: 0.0)
                                         .blur(radius: 5)
                                         .opacity(0.25)
                                 )
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                                        .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
                                 )
                         }
                         .contextMenu {
@@ -296,7 +229,7 @@ struct TranslateList: View {
                                 }
                             }
                             
-                            if buttonState != .digraph && settings.digraph && (settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina") {
+                            if buttonState != .digraph && settings.digraph && settings.aurebeshFont.contains("Aurebesh") {
                                 Button(action: {
                                     if settings.hapticOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
                                     
@@ -325,12 +258,12 @@ struct TranslateList: View {
                             }
                         }) {
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(settings.colorAccent.color.opacity(0.1))
-                                .background(settings.colorAccent.color.opacity(0.1))
+                                .foregroundColor(settings.accentColor.color.opacity(0.1))
+                                .background(settings.accentColor.color.opacity(0.1))
                                 .frame(width: buttonSize * 3, height: buttonSize)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                                        .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
                                 )
                         }
                         
@@ -339,27 +272,27 @@ struct TranslateList: View {
                             
                             showEnglish.toggle()
                         }) {
-                            Text(showEnglish ? "ENGLISH" : "AUREBESH")
+                            Text(showEnglish ? "English" : "Aurebesh")
                                 .font(.title3)
                                 .foregroundColor(.primary)
                                 .padding(15)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.25)
                                 .frame(width: buttonSize * 2 + spacing, height: buttonSize)
-                                .background(settings.colorAccent.color.opacity(0.2))
-                                .foregroundColor(settings.colorAccent.color)
+                                .background(settings.accentColor.color.opacity(0.2))
+                                .foregroundColor(settings.accentColor.color)
                                 .cornerRadius(10)
-                                .shadow(color: settings.colorAccent.color.opacity(0.25), radius: 10, x: 0.0, y: 0.0)
+                                .shadow(color: settings.accentColor.color.opacity(0.25), radius: 10, x: 0.0, y: 0.0)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(settings.colorAccent.color, lineWidth: 5)
-                                        .shadow(color: settings.colorAccent.color, radius: 10, x: 0.0, y: 0.0)
+                                        .stroke(settings.accentColor.color, lineWidth: 5)
+                                        .shadow(color: settings.accentColor.color, radius: 10, x: 0.0, y: 0.0)
                                         .blur(radius: 5)
                                         .opacity(0.25)
                                 )
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(settings.colorAccent.color.opacity(0.4), lineWidth: 1)
+                                        .stroke(settings.accentColor.color.opacity(0.4), lineWidth: 1)
                                 )
                         }
                     }
@@ -369,35 +302,37 @@ struct TranslateList: View {
                 .animation(.smooth, value: showEnglish)
             }
             
-            Picker("Keyboard Type", selection: $settings.translatingToAurebesh.animation(.smooth)) {
-                Text("Standard").tag(true)
-                Text("Galactic").tag(false)
+            if !keyboardObserver.isKeyboardVisible {
+                Picker("Keyboard Type", selection: $settings.translatingToAurebesh.animation(.smooth)) {
+                    Text("Encoder").tag(true)
+                    Text("Decoder").tag(false)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .background(settings.accentColor.color.opacity(0.2))
+                .foregroundColor(settings.accentColor.color)
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(settings.accentColor.color, lineWidth: 5)
+                        .blur(radius: 5)
+                        .opacity(0.35)
+                )
+                .padding(.top, 6)
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .background(settings.colorAccent.color.opacity(0.2))
-            .foregroundColor(settings.colorAccent.color)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(settings.colorAccent.color, lineWidth: 5)
-                    .blur(radius: 5)
-                    .opacity(0.35)
-            )
-            .padding(.top, 6)
             #endif
         }
         .padding(.horizontal)
         .padding(.bottom)
         .frame(maxWidth: 800)
         .onChange(of: settings.digraph) { newValue in
-            if !newValue || !(settings.fontAurebesh == "Aurebesh" || settings.fontAurebesh == "AurebeshCantina") {
+            if !newValue || !settings.aurebeshFont.contains("Aurebesh") {
                 if buttonState == .digraph {
                     buttonState = .normal
                 }
             }
         }
-        .onChange(of: settings.fontAurebesh) { newValue in
-            if !settings.digraph || !(newValue == "Aurebesh" || newValue == "AurebeshCantina") {
+        .onChange(of: settings.aurebeshFont) { newValue in
+            if !settings.digraph || !newValue.contains("Aurebesh") {
                 if buttonState == .digraph {
                     buttonState = .normal
                 }

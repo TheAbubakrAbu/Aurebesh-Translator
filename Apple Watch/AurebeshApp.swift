@@ -27,16 +27,21 @@ struct AurebeshWatchApp: App {
                 }
             }
             .environmentObject(settings)
-            .accentColor(settings.colorAccent.color)
-            .tint(settings.colorAccent.color)
+            .accentColor(settings.accentColor.color)
+            .tint(settings.accentColor.color)
             .background(.black)
             .preferredColorScheme(.dark)
         }
-        .onChange(of: settings.colorAccent) { newValue in
+        .onChange(of: settings.accentColor) { _ in
             sendMessageToPhone()
         }
-        .onChange(of: settings.digraph) { newValue in
+        .onChange(of: settings.digraph) { on in
             sendMessageToPhone()
+            
+            withAnimation(.smooth) {
+                let base = settings.aurebeshFont.replacingOccurrences(of: "Digraph", with: "")
+                settings.aurebeshFont = base + (on ? "Digraph" : "")
+            }
         }
     }
     
