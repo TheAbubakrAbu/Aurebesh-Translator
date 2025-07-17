@@ -67,7 +67,7 @@ struct AlphabetList: View {
     }
     
     private var digraphPrefixWidth: CGFloat {
-        columnWidth(for: .title3, extra: 4, sample: "(WW )")
+        columnWidth(for: .title3, extra: 4, sample: "(WW )", fontName: settings.aurebeshFont)
     }
     
     private var digraphLatinWidth: CGFloat {
@@ -237,101 +237,104 @@ struct AlphabetList: View {
     var body: some View {
         VStack {
             List {
-                #if !os(watchOS)
-                VStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(settings.accentColor.color, lineWidth: 1)
-                            .cornerRadius(10)
-                        
-                        VStack {
-                            Text("Aurebesh Alphabet")
-                                .font(.title3)
-                                .foregroundColor(settings.accentColor.color)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                Group {
+                    #if !os(watchOS)
+                    VStack {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(settings.accentColor.color, lineWidth: 1)
+                                .cornerRadius(10)
                             
-                            Text("Aurebesh Alphabet")
-                                .font(.custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .body).pointSize))
-                                .foregroundColor(settings.accentColor.color)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
-                                .padding(.bottom)
-                            
-                            AlphabetImage()
-                                .environmentObject(settings)
+                            VStack {
+                                Text("Aurebesh Alphabet")
+                                    .font(.title3)
+                                    .foregroundColor(settings.accentColor.color)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)
+                                
+                                Text("Aurebesh Alphabet")
+                                    .font(.custom(settings.aurebeshFont, size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                                    .foregroundColor(settings.accentColor.color)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.bottom)
+                                
+                                AlphabetImage()
+                                    .environmentObject(settings)
+                            }
+                            .padding()
                         }
-                        .padding()
                     }
-                }
-                .listRowSeparator(.hidden)
-                #endif
-                
-                let filteredAurebeshLetters = aurebeshLetters.filter {
-                    searchText.isEmpty ? true :
-                    $0.name.lowercased().contains(searchText.lowercased()) ||
-                    $0.symbol.lowercased().contains(searchText.lowercased()) ||
-                    $0.symbol.lowercased().first == searchText.lowercased().first
-                }
-                
-                if !filteredAurebeshLetters.isEmpty {
-                    Section(header: Text("STANDARD LETTERS")) {
-                        alphabetRows(filteredAurebeshLetters)
+                    .listRowSeparator(.hidden)
+                    #endif
+                    
+                    let filteredAurebeshLetters = aurebeshLetters.filter {
+                        searchText.isEmpty ? true :
+                        $0.name.lowercased().contains(searchText.lowercased()) ||
+                        $0.symbol.lowercased().contains(searchText.lowercased()) ||
+                        $0.symbol.lowercased().first == searchText.lowercased().first
                     }
-                }
-                
-                let filteredDigraphLetters = digraphLetters.filter {
-                    searchText.isEmpty ? true :
-                    $0.name.lowercased().contains(searchText.lowercased()) ||
-                    $0.symbol.lowercased().contains(searchText.lowercased()) ||
-                    $0.symbol.lowercased().first == searchText.lowercased().first ||
-                    $0.symbol.lowercased().first == searchText.lowercased().first ||
-                    $0.name.lowercased().first == searchText.lowercased().first
-                }
-                
-                if settings.aurebeshFont.contains("Aurebesh") && !filteredDigraphLetters.isEmpty {
-                    Section(header: Text("DIGRAPH LETTERS")) {
-                        alphabetRows(filteredDigraphLetters, digraph: true)
-                    }
-                }
-                
-                let filteredNumberLetters = numberLetters.filter {
-                    searchText.isEmpty ? true :
-                    $0.name.lowercased().contains(searchText.lowercased())
-                }
-                
-                if !filteredNumberLetters.isEmpty {
-                    Section(header: Text("NUMBERS")) {
-                        alphabetRows(filteredNumberLetters)
-                    }
-                }
-                
-                let filteredSpecialLetters = specialAlphabetLetters.filter {
-                    searchText.isEmpty ? true :
-                    $0.name.lowercased().contains(searchText.lowercased())
-                }
-                
-                if !filteredSpecialLetters.isEmpty {
-                    Section(header: Text("SPECIAL CHARACTERS")) {
-                        alphabetRows(filteredSpecialLetters)
-                    }
-                }
-                
-                if searchText.isEmpty {
-                    Section(header: Text("AUREBESH EXPLANATION")) {
-                        Group {
-                            Text("Aurebesh is the standard script for writing Galactic Basic (English), the most common language in the galaxy. Its name comes from the first two letters: \"Aurek\" and \"Besh,\" much like the origins of other galactic scripts. Aurebesh is typically written from left to right, but can also be written from top to bottom too.")
-                            
-                            Text("Each symbol in Aurebesh corresponds directly to a letter in English, making it easy to transcribe. It also includes digraph—characters representing two-letter combinations like \"ch,\" \"ae,\" or \"th.\" However, these digraphs are rare and appear only in specific versions, like Standard Aurebesh.")
-                            
-                            Text("Aurebesh is found everywhere—on control panels, digital interfaces, signage, and official records. It unifies communication across countless interstellar worlds, cementing its place as an essential galactic script.")
-                            
-                            Link("Learn More about Aurebesh on Wookieepedia", destination: URL(string: "https://starwars.fandom.com/wiki/Aurebesh")!)
-                                .foregroundColor(settings.accentColor.color)
+                    
+                    if !filteredAurebeshLetters.isEmpty {
+                        Section(header: Text("STANDARD LETTERS")) {
+                            alphabetRows(filteredAurebeshLetters)
                         }
-                        .font(.body)
+                    }
+                    
+                    let filteredDigraphLetters = digraphLetters.filter {
+                        searchText.isEmpty ? true :
+                        $0.name.lowercased().contains(searchText.lowercased()) ||
+                        $0.symbol.lowercased().contains(searchText.lowercased()) ||
+                        $0.symbol.lowercased().first == searchText.lowercased().first ||
+                        $0.symbol.lowercased().first == searchText.lowercased().first ||
+                        $0.name.lowercased().first == searchText.lowercased().first
+                    }
+                    
+                    if settings.aurebeshFont.contains("Aurebesh") && !filteredDigraphLetters.isEmpty {
+                        Section(header: Text("DIGRAPH LETTERS")) {
+                            alphabetRows(filteredDigraphLetters, digraph: true)
+                        }
+                    }
+                    
+                    let filteredNumberLetters = numberLetters.filter {
+                        searchText.isEmpty ? true :
+                        $0.name.lowercased().contains(searchText.lowercased())
+                    }
+                    
+                    if !filteredNumberLetters.isEmpty {
+                        Section(header: Text("NUMBERS")) {
+                            alphabetRows(filteredNumberLetters)
+                        }
+                    }
+                    
+                    let filteredSpecialLetters = specialAlphabetLetters.filter {
+                        searchText.isEmpty ? true :
+                        $0.name.lowercased().contains(searchText.lowercased())
+                    }
+                    
+                    if !filteredSpecialLetters.isEmpty {
+                        Section(header: Text("SPECIAL CHARACTERS")) {
+                            alphabetRows(filteredSpecialLetters)
+                        }
+                    }
+                    
+                    if searchText.isEmpty {
+                        Section(header: Text("AUREBESH EXPLANATION")) {
+                            Group {
+                                Text("Aurebesh is the standard script for Galactic Basic (English), the most common language in the galaxy. Named after its first two letters, \"Aurek\" and \"Besh,\" it's usually written left to right but can also appear top to bottom.")
+
+                                Text("Each symbol matches a letter in English, making it easy to transcribe. Aurebesh also supports digraphs like \"ch,\" \"ae,\" and \"th,\" though these are rare. Digraph support can be customized in the System Module.")
+                                
+                                Text("From control panels to signage, Aurebesh is everywhere, uniting communication across countless interstellar worlds.")
+                                
+                                Link("Learn More about Aurebesh on Wookieepedia", destination: URL(string: "https://starwars.fandom.com/wiki/Aurebesh")!)
+                                    .foregroundColor(settings.accentColor.color)
+                            }
+                            .font(.body)
+                        }
                     }
                 }
+                .listRowBackground(Color.clear)
             }
             #if !os(watchOS)
             .listStyle(.plain)

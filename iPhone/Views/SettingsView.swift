@@ -48,18 +48,33 @@ struct SettingsList: View {
                         .fixedSize()
                 }
                 #else
-                HStack {
-                    Text("Aurebesh Text Size: ")
-                        .font(.subheadline)
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Aurebesh Text Size: ")
+                            .font(.subheadline)
+                        
+                        Text("\(Int(settings.aurebeshFontSize))")
+                            .font(.subheadline)
+                            .foregroundColor(settings.accentColor.color)
+                            .padding(.leading, -6)
+                        
+                        Spacer()
+                        
+                        Stepper(value: $settings.aurebeshFontSize.animation(.smooth), in: 15...50, step: 5) {}
+                            .background(settings.accentColor.color.opacity(0.2))
+                            .foregroundColor(settings.accentColor.color)
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(settings.accentColor.color, lineWidth: 5)
+                                    .blur(radius: 5)
+                                    .opacity(0.5)
+                            )
+                            .fixedSize()
+                    }
                     
-                    Text("\(Int(settings.aurebeshFontSize))")
-                        .font(.subheadline)
-                        .foregroundColor(settings.accentColor.color)
-                        .padding(.leading, -6)
-                    
-                    Spacer()
-                    
-                    Stepper(value: $settings.aurebeshFontSize.animation(.smooth), in: 15...50, step: 5) {}
+                    Slider(value: $settings.aurebeshFontSize.animation(.smooth), in: 15.0...50.0)
+                        .padding(.horizontal, 10)
                         .background(settings.accentColor.color.opacity(0.2))
                         .foregroundColor(settings.accentColor.color)
                         .cornerRadius(10)
@@ -69,7 +84,6 @@ struct SettingsList: View {
                                 .blur(radius: 5)
                                 .opacity(0.5)
                         )
-                        .fixedSize()
                 }
                 #endif
                 
