@@ -1,4 +1,7 @@
 import SwiftUI
+import os
+
+let logger = Logger(subsystem: "com.Quran.Elmallah.Datapad-Translator", category: "Aurebesh")
 
 final class Settings: ObservableObject {
     static let shared = Settings()

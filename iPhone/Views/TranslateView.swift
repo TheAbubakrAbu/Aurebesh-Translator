@@ -296,6 +296,7 @@ struct TranslateList: View {
                                 )
                         }
                     }
+                    .padding(.top, -1)
                 }
                 .animation(.smooth, value: settings.translatingToAurebesh)
                 .animation(.smooth, value: buttonState)
@@ -317,7 +318,7 @@ struct TranslateList: View {
                         .blur(radius: 5)
                         .opacity(0.35)
                 )
-                .padding(.top, 6)
+                .padding(.top, 5)
             }
             #endif
         }

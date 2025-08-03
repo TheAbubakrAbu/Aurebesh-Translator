@@ -38,11 +38,10 @@ struct CustomTextEditor: UIViewRepresentable {
         }
         
         let ph = UILabel()
-        ph.text = placeholderFitting(in: tv)
+        ph.text = "Type here"
         ph.textColor = UIColor(.secondary)
         ph.numberOfLines = 0
-        ph.adjustsFontSizeToFitWidth = true
-        ph.minimumScaleFactor = 0.6
+        ph.lineBreakMode = .byWordWrapping
         ph.isUserInteractionEnabled = false
         ph.translatesAutoresizingMaskIntoConstraints = false
 
@@ -58,6 +57,7 @@ struct CustomTextEditor: UIViewRepresentable {
         ])
         
         context.coordinator.placeholder = ph
+        context.coordinator.startObservingBounds(of: tv)
         ph.isHidden = !text.isEmpty
         ph.font = editorFont()
 
@@ -91,17 +91,7 @@ struct CustomTextEditor: UIViewRepresentable {
         tv.textColor = aurebeshMode ? UIColor(settings.accentColor.color) : UIColor(.primary)
         
         if let ph = context.coordinator.placeholder {
-            tv.layoutIfNeeded()
-            ph.text = placeholderFitting(in: tv)
-
-            DispatchQueue.main.async { [weak tv, weak ph] in
-                if let tv = tv, let ph = ph {
-                    ph.text = placeholderFitting(in: tv)
-                }
-            }
-
-            ph.font = wantedFont
-            ph.textColor = UIColor(.secondary)
+            ph.font = editorFont()
             ph.isHidden = !text.isEmpty
         }
 
@@ -156,24 +146,6 @@ struct CustomTextEditor: UIViewRepresentable {
         tv.reloadInputViews()
     }
     
-    private func placeholderFitting(in textView: UITextView) -> String {
-        let base = "Type here"
-        
-        guard aurebeshMode else { return base }
-        
-        let font = editorFont()
-        
-        let usableW = textView.bounds.width - textView.textContainerInset.left - textView.textContainerInset.right
-        
-        let singleLine = (base as NSString).boundingRect(
-            with: .zero,
-            options: .usesLineFragmentOrigin,
-            attributes: [.font: font],
-            context: nil).width
-        
-        return singleLine > usableW ? "Type\nhere" : base
-    }
-    
     private func calculatedInsets() -> UIEdgeInsets {
         let top: CGFloat = aurebeshMode
             ? settings.aurebeshFont.contains("AurebeshNexus") ? 20
@@ -181,6 +153,8 @@ struct CustomTextEditor: UIViewRepresentable {
             : settings.aurebeshFont.contains("AurebeshPixel") ? 4
             : settings.aurebeshFont.contains("AurebeshCantina") || settings.aurebeshFont.contains("AurebeshCore") ? 9
             : settings.aurebeshFont.contains("Mando") ? 16
+            : settings.aurebeshFont.contains("OuterRimHive") ? 20
+            : settings.aurebeshFont.contains("OuterRimProtobesh") ? 6
             : 12
             : 12
 
@@ -196,6 +170,7 @@ struct CustomTextEditor: UIViewRepresentable {
         var cachedFontSize: CGFloat
         weak var placeholder: UILabel?
         var placeholderTopConstraint: NSLayoutConstraint?
+        private var boundsObserver: NSKeyValueObservation?
 
         init(_ parent: CustomTextEditor) {
             self.parent = parent
@@ -203,15 +178,44 @@ struct CustomTextEditor: UIViewRepresentable {
             self.cachedFontName = parent.settings.aurebeshFont
             self.cachedFontSize = parent.settings.aurebeshFontSize
         }
+        
+        deinit {
+            boundsObserver?.invalidate()
+        }
 
         func textViewDidChange(_ tv: UITextView) {
             parent.text = tv.text
             placeholder?.isHidden = !tv.text.isEmpty
+            updatePlaceholder(in: tv)
         }
 
         func textViewDidEndEditing(_ tv: UITextView) {
             placeholder?.isHidden = !tv.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             parent.text = tv.text
+        }
+        
+        func startObservingBounds(of tv: UITextView) {
+            boundsObserver = tv.observe(\.bounds, options: [.new]) { [weak self] tv, _ in
+                self?.updatePlaceholder(in: tv)
+            }
+        }
+        
+        func updatePlaceholder(in tv: UITextView) {
+            guard let ph = placeholder else { return }
+
+            let max = tv.bounds.width - tv.textContainerInset.left - tv.textContainerInset.right
+            if ph.preferredMaxLayoutWidth != max { ph.preferredMaxLayoutWidth = max }
+
+            let style = NSMutableParagraphStyle()
+            style.lineHeightMultiple = 1.0
+            style.alignment = .natural
+
+            ph.attributedText = NSAttributedString(
+                string: "Type here",
+                attributes: [.font: tv.font!, .foregroundColor: UIColor(.secondary), .paragraphStyle: style]
+            )
+
+            ph.isHidden = !tv.text.isEmpty
         }
     }
 }

@@ -223,7 +223,6 @@ struct DefaultKeyboardView: View {
                                 aurebeshFont: aurebeshFont,
                                 action: {
                                     handleKeyPress(firstKey)
-                                    //print(geometry.size.width)
                                 }
                             )
 
