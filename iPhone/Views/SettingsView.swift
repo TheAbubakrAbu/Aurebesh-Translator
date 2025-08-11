@@ -170,23 +170,16 @@ struct SettingsList: View {
                     
                     showingCredits = true
                 }) {
-                    HStack {
-                        Image(systemName: "scroll.fill")
-                        
-                        Text("View Credits")
-                    }
-                    .font(.subheadline)
-                    .foregroundColor(settings.accentColor.color)
+                    Label("View Credits", systemImage: "scroll.fill")
+                        .font(.subheadline)
+                        .foregroundColor(settings.accentColor.color)
                 }
                 .sheet(isPresented: $showingCredits) {
                     CreditsView()
                 }
-                .sheet(isPresented: $showingDatapad) {
-                    SplashScreen()
-                }
-                
+
                 Button(action: {
-                    if settings.hapticOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
+                    settings.hapticFeedback()
                     
                     withAnimation(.smooth()) {
                         if let url = URL(string: "itms-apps://itunes.apple.com/app/id6670201513?action=write-review") {
@@ -194,32 +187,68 @@ struct SettingsList: View {
                         }
                     }
                 }) {
-                    HStack {
-                        Image(systemName: "star.bubble.fill")
+                    Label("Leave a Review", systemImage: "star.bubble.fill")
+                        .font(.subheadline)
+                        .foregroundColor(settings.accentColor.color)
+                }
+                .contextMenu {
+                    Button(action: {
+                        settings.hapticFeedback()
                         
-                        Text("Leave a Review")
+                        UIPasteboard.general.string = "itms-apps://itunes.apple.com/app/id6670201513?action=write-review"
+                    }) {
+                        HStack {
+                            Image(systemName: "doc.on.doc")
+                            Text("Copy Website")
+                        }
                     }
-                    .font(.subheadline)
-                    .foregroundColor(settings.accentColor.color)
-                    .contextMenu {
-                        Button(action: {
-                            settings.hapticFeedback()
-                            
-                            UIPasteboard.general.string = "itms-apps://itunes.apple.com/app/id6670201513?action=write-review"
-                        }) {
-                            HStack {
-                                Image(systemName: "doc.on.doc")
-                                Text("Copy Website")
-                            }
+                }
+
+                Button(action: {
+                    settings.hapticFeedback()
+                    
+                    withAnimation(.smooth()) {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                }) {
+                    Label("Open App Settings", systemImage: "gearshape.fill")
+                        .font(.subheadline)
+                        .foregroundColor(settings.accentColor.color)
+                }
+                #endif
+
+                HStack {
+                    Text("Website: ")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: glyphWidth)
+                    
+                    Link("abubakrelmallah.com", destination: URL(string: "https://abubakrelmallah.com/")!)
+                        .font(.subheadline)
+                        .foregroundColor(settings.accentColor.color)
+                        .multilineTextAlignment(.leading)
+                        .padding(.leading, -4)
+                }
+                #if !os(watchOS)
+                .contextMenu {
+                    Button(action: {
+                        UIPasteboard.general.string = "abubakrelmallah.com"
+                    }) {
+                        HStack {
+                            Image(systemName: "doc.on.doc")
+                            Text("Copy Website")
                         }
                     }
                 }
                 #endif
-                
+
                 HStack {
-                    Text("Contact me at: ")
+                    Text("Contact: ")
                         .font(.subheadline)
                         .multilineTextAlignment(.leading)
+                        .frame(width: glyphWidth)
                     
                     Text("ammelmallah@icloud.com")
                         .font(.subheadline)
@@ -239,8 +268,50 @@ struct SettingsList: View {
                     }
                 }
                 #endif
+                
+                VersionNumber(width: glyphWidth)
+                    .font(.subheadline)
             }
         }
         .animation(.smooth(duration: 1.0), value: settings.accentColor.color)
+    }
+    
+    private func columnWidth(for textStyle: UIFont.TextStyle, extra: CGFloat = 4, sample: String? = nil, fontName: String? = nil) -> CGFloat {
+        let sampleString = (sample ?? "M") as NSString
+        let font: UIFont
+
+        if let fontName = fontName, let customFont = UIFont(name: fontName, size: UIFont.preferredFont(forTextStyle: textStyle).pointSize) {
+            font = customFont
+        } else {
+            font = UIFont.preferredFont(forTextStyle: textStyle)
+        }
+
+        return ceil(sampleString.size(withAttributes: [.font: font]).width) + extra
+    }
+
+    private var glyphWidth: CGFloat {
+        columnWidth(for: .subheadline, extra: 0, sample: "Contact: ")
+    }
+}
+
+struct VersionNumber: View {
+    @EnvironmentObject var settings: Settings
+    
+    var width: CGFloat?
+    
+    var body: some View {
+        HStack {
+            if let width = width {
+                Text("Version:")
+                    .frame(width: width)
+            } else {
+                Text("Version")
+            }
+            
+            Text("1.4.7")
+                .foregroundColor(settings.accentColor.color)
+                .padding(.leading, -4)
+        }
+        .foregroundColor(.primary)
     }
 }
