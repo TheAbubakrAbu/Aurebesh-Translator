@@ -1,5 +1,4 @@
 import SwiftUI
-import WatchConnectivity
 import StoreKit
 
 @main
@@ -11,10 +10,6 @@ struct AurebeshTranslatorApp: App {
     @AppStorage("timeSpent") private var timeSpent: Double = 0
     @AppStorage("shouldShowRateAlert") private var shouldShowRateAlert: Bool = true
     @State private var startTime: Date?
-    
-    init() {
-        _ = WatchConnectivityManager.shared
-    }
     
     var body: some Scene {
         WindowGroup {
@@ -50,6 +45,7 @@ struct AurebeshTranslatorApp: App {
             .tint(settings.accentColor.color)
             .preferredColorScheme(settings.colorScheme)
             .transition(.opacity)
+            .animation(.easeInOut, value: isLaunching)
             .animation(.easeInOut, value: settings.firstLaunch)
             .onAppear {
                 if shouldShowRateAlert {
@@ -81,122 +77,11 @@ struct AurebeshTranslatorApp: App {
                 }
             }
         }
-        .onChange(of: settings.accentColor) { _ in
-            sendMessageToWatch()
-        }
         .onChange(of: settings.digraph) { on in
-            sendMessageToWatch()
-            
             withAnimation(.smooth) {
                 let base = settings.aurebeshFont.replacingOccurrences(of: "Digraph", with: "")
                 settings.aurebeshFont = base + (on ? "Digraph" : "")
             }
-        }
-    }
-    
-    private func sendMessageToWatch() {
-        guard WCSession.default.isPaired else {
-            logger.debug("No Apple Watch is paired")
-            return
-        }
-        
-        let settingsData = settings.dictionaryRepresentation()
-        let message = ["settings": settingsData]
-
-        if WCSession.default.isReachable {
-            logger.debug("Watch is reachable. Sending message to watch: \(message)")
-
-            WCSession.default.sendMessage(message, replyHandler: nil) { error in
-                logger.debug("Error sending message to watch: \(error.localizedDescription)")
-            }
-        } else {
-            logger.debug("Watch is not reachable. Transferring user info to watch: \(message)")
-            WCSession.default.transferUserInfo(message)
-        }
-    }
-}
-
-struct DismissKeyboardOnScrollModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        Group {
-            if #available(iOS 16.0, *) {
-                content
-                    .scrollDismissesKeyboard(.immediately)
-            } else {
-                content
-                    .gesture(
-                        DragGesture().onChanged { _ in
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                        }
-                    )
-            }
-        }
-    }
-}
-
-extension View {
-    func dismissKeyboardOnScroll() -> some View {
-        self.modifier(DismissKeyboardOnScrollModifier())
-    }
-}
-
-struct SearchBar: UIViewRepresentable {
-    @Binding var text: String
-    
-    var onSearchButtonClicked: (() -> Void)?
-
-    class Coordinator: NSObject, UISearchBarDelegate {
-        @Binding var text: String
-
-        init(text: Binding<String>) {
-            _text = text
-        }
-
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            text = searchText
-        }
-
-        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-            searchBar.showsCancelButton = true
-        }
-
-        func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-            searchBar.showsCancelButton = false
-        }
-
-        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            searchBar.showsCancelButton = false
-            searchBar.text = ""
-            searchBar.resignFirstResponder()
-
-            text = ""
-        }
-
-        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            searchBar.resignFirstResponder()
-        }
-    }
-
-    func makeCoordinator() -> SearchBar.Coordinator {
-        return Coordinator(text: $text)
-    }
-
-    func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
-        let searchBar = UISearchBar(frame: .zero)
-        searchBar.delegate = context.coordinator
-        searchBar.placeholder = "Search"
-        searchBar.autocorrectionType = .no
-        return searchBar
-    }
-
-    func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
-        uiView.text = text
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        DispatchQueue.main.async {
-            self.text = searchBar.text ?? ""
         }
     }
 }

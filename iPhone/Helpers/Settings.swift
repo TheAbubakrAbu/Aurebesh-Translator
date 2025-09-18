@@ -44,23 +44,6 @@ final class Settings: ObservableObject {
     
     @Published var inputText: String = ""
     
-    func dictionaryRepresentation() -> [String: Any] {
-        return [
-            "accentColor": self.accentColor.rawValue,
-            "digraph": self.digraph,
-        ]
-    }
-
-    func update(from dict: [String: Any]) {
-        if let accentColor = dict["accentColor"] as? String,
-           let accentColorValue = AccentColor(rawValue: accentColor) {
-            self.accentColor = accentColorValue
-        }
-        if let digraph = dict["digraph"] as? Bool {
-            self.digraph = digraph
-        }
-    }
-    
     func hapticFeedback() {
         #if os(iOS)
         if hapticOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }

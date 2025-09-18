@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7202B2B52C7F232A00CFA079 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7202B2A82C7F232800CFA079 /* Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		721722EC2E68F324002F584F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721722EB2E68F324002F584F /* Helpers.swift */; };
 		7237663D2E1EC8DD00607A3D /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7237663C2E1EC8DD00607A3D /* KeyboardObserver.swift */; };
 		723766492E1EE53000607A3D /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723766472E1EE53000607A3D /* DefaultKeyboard.swift */; };
 		723766512E1EE5A300607A3D /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723766502E1EE5A300607A3D /* CustomTextEditor.swift */; };
@@ -15,8 +16,6 @@
 		726203692E2833F300A4C615 /* AurebeshBasic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 726203662E2833F300A4C615 /* AurebeshBasic.otf */; };
 		7262036A2E2833F300A4C615 /* AurebeshBasicDigraph.otf in Resources */ = {isa = PBXBuildFile; fileRef = 726203672E2833F300A4C615 /* AurebeshBasicDigraph.otf */; };
 		7262036B2E2833F300A4C615 /* AurebeshBasic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 726203662E2833F300A4C615 /* AurebeshBasic.otf */; };
-		72AE27152D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
-		72AE27162D3C920C009728F9 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27142D3C920C009728F9 /* WatchConnectivity.swift */; };
 		72AE27182D3C9233009728F9 /* AurebeshLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27172D3C9233009728F9 /* AurebeshLetters.swift */; };
 		72AE27192D3C9233009728F9 /* AurebeshLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE27172D3C9233009728F9 /* AurebeshLetters.swift */; };
 		72AE27222D3C9268009728F9 /* AlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE271C2D3C9268009728F9 /* AlphabetView.swift */; };
@@ -64,13 +63,13 @@
 /* Begin PBXFileReference section */
 		7202B2502C7DC6A200CFA079 /* iPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7202B2A82C7F232800CFA079 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		721722EB2E68F324002F584F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		7237663C2E1EC8DD00607A3D /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		723766472E1EE53000607A3D /* DefaultKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
 		723766502E1EE5A300607A3D /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		725D4C662E2955FB00817FFB /* Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Logo.jpg; sourceTree = "<group>"; };
 		726203662E2833F300A4C615 /* AurebeshBasic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AurebeshBasic.otf; sourceTree = "<group>"; };
 		726203672E2833F300A4C615 /* AurebeshBasicDigraph.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AurebeshBasicDigraph.otf; sourceTree = "<group>"; };
-		72AE27142D3C920C009728F9 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
 		72AE27172D3C9233009728F9 /* AurebeshLetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshLetters.swift; sourceTree = "<group>"; };
 		72AE271C2D3C9268009728F9 /* AlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetView.swift; sourceTree = "<group>"; };
 		72AE271D2D3C9268009728F9 /* AurebeshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AurebeshApp.swift; sourceTree = "<group>"; };
@@ -137,9 +136,9 @@
 		723766402E1EC8EF00607A3D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				721722EB2E68F324002F584F /* Helpers.swift */,
 				72AE27172D3C9233009728F9 /* AurebeshLetters.swift */,
 				72E4928E2CCC824300A4D138 /* Settings.swift */,
-				72AE27142D3C920C009728F9 /* WatchConnectivity.swift */,
 				7237663C2E1EC8DD00607A3D /* KeyboardObserver.swift */,
 				723766472E1EE53000607A3D /* DefaultKeyboard.swift */,
 				723766502E1EE5A300607A3D /* CustomTextEditor.swift */,
@@ -300,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72AE27222D3C9268009728F9 /* AlphabetView.swift in Sources */,
+				721722EC2E68F324002F584F /* Helpers.swift in Sources */,
 				723766512E1EE5A300607A3D /* CustomTextEditor.swift in Sources */,
 				72AE27232D3C9268009728F9 /* AurebeshApp.swift in Sources */,
 				7237663D2E1EC8DD00607A3D /* KeyboardObserver.swift in Sources */,
@@ -308,7 +308,6 @@
 				72AE27262D3C9268009728F9 /* TranslateView.swift in Sources */,
 				72E492942CCC824300A4D138 /* CreditsView.swift in Sources */,
 				723766492E1EE53000607A3D /* DefaultKeyboard.swift in Sources */,
-				72AE27162D3C920C009728F9 /* WatchConnectivity.swift in Sources */,
 				72E492972CCC824300A4D138 /* Settings.swift in Sources */,
 				72AE27182D3C9233009728F9 /* AurebeshLetters.swift in Sources */,
 				72E492982CCC824300A4D138 /* SettingsView.swift in Sources */,
@@ -326,7 +325,6 @@
 				72E4929F2CCC824300A4D138 /* SettingsView.swift in Sources */,
 				72AE27192D3C9233009728F9 /* AurebeshLetters.swift in Sources */,
 				72E492AB2CCC826700A4D138 /* AurebeshApp.swift in Sources */,
-				72AE27152D3C920C009728F9 /* WatchConnectivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,7 +489,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.47;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -525,7 +523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.47;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -554,7 +552,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.47;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -586,7 +584,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.47;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Quran.Elmallah.Datapad-Translator.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
