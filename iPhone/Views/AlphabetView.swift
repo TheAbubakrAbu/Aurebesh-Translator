@@ -327,8 +327,13 @@ struct AlphabetList: View {
                                 
                                 Text("From control panels to signage, Aurebesh is everywhere, uniting communication across countless interstellar worlds.")
                                 
-                                Link("Learn More about Aurebesh on Wookieepedia", destination: URL(string: "https://starwars.fandom.com/wiki/Aurebesh")!)
+                                if let url = URL(string: "https://starwars.fandom.com/wiki/Aurebesh") {
+                                    Link(
+                                        "Learn More about Aurebesh on Wookieepedia",
+                                        destination: url
+                                    )
                                     .foregroundColor(settings.accentColor.color)
+                                }
                             }
                             .font(.body)
                         }

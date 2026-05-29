@@ -21,22 +21,24 @@ struct CreditsView: View {
                     HStack {
                         Spacer()
                         
-                        Link("abubakrelmallah.com", destination: URL(string: "https://abubakrelmallah.com/")!)
-                            .foregroundColor(settings.accentColor.color)
-                            .font(.headline)
-                            .multilineTextAlignment(.center)
-                            .padding(.vertical, 4)
-                            .padding(.bottom, 12)
-                            .contextMenu {
-                                Button(action: {
-                                    UIPasteboard.general.string = "https://abubakrelmallah.com/"
-                                }) {
-                                    HStack {
-                                        Image(systemName: "doc.on.doc")
-                                        Text("Copy Website")
+                        if let url = URL(string: "https://abubakrelmallah.com/") {
+                            Link("abubakrelmallah.com", destination: url)
+                                .foregroundColor(settings.accentColor.color)
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                                .padding(.vertical, 4)
+                                .padding(.bottom, 12)
+                                .contextMenu {
+                                    Button(action: {
+                                        UIPasteboard.general.string = "https://abubakrelmallah.com/"
+                                    }) {
+                                        HStack {
+                                            Image(systemName: "doc.on.doc")
+                                            Text("Copy Website")
+                                        }
                                     }
                                 }
-                            }
+                        }
                         
                         Spacer()
                     }
@@ -48,47 +50,65 @@ struct CreditsView: View {
                 .listRowSeparator(.hidden)
                 
                 Section {
-                    Link("Check out Datapad | Aurebesh Translator, featuring a galactic-themed UI, widgets, and support for three types of Aurebesh", destination: URL(string: "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone")!)
+                    if let url = URL(string: "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone") {
+                        Link(
+                            "Check out Datapad | Aurebesh Translator, featuring a galactic-themed UI, widgets, and support for three types of Aurebesh",
+                            destination: url
+                        )
                         .font(.body)
                         .foregroundColor(settings.accentColor.color)
                         .contextMenu {
-                            Button(action: {
-                                UIPasteboard.general.string = "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone"
-                            }) {
+                            Button {
+                                UIPasteboard.general.string =
+                                "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone"
+                            } label: {
                                 HStack {
                                     Image(systemName: "doc.on.doc")
                                     Text("Copy Website")
                                 }
                             }
                         }
-                    
-                    Link("View the first rendition of Datapad/Aurebesh Translator that I made when I was fifteen in AP Computer Science Principles as a sophomore (2021) via code.org", destination: URL(string: "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc")!)
+                    }
+
+                    if let url = URL(string: "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc") {
+                        Link(
+                            "View the first rendition of Datapad/Aurebesh Translator that I made when I was fifteen in AP Computer Science Principles as a sophomore (2021) via code.org",
+                            destination: url
+                        )
                         .font(.body)
                         .foregroundColor(settings.accentColor.color)
                         .contextMenu {
-                            Button(action: {
-                                UIPasteboard.general.string = "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc"
-                            }) {
+                            Button {
+                                UIPasteboard.general.string =
+                                "https://studio.code.org/projects/applab/3GTPl_9o0qf9zWutRclvLYYoJRopnjTmVTdm3cXHELc"
+                            } label: {
                                 HStack {
                                     Image(systemName: "doc.on.doc")
                                     Text("Copy Website")
                                 }
                             }
                         }
-                    
-                    Link("View the source code: github.com/TheAbubakrAbu/Aurebesh-Translator", destination: URL(string: "https://github.com/TheAbubakrAbu/Aurebesh-Translator")!)
+                    }
+
+                    if let url = URL(string: "https://github.com/TheAbubakrAbu/Aurebesh-Translator") {
+                        Link(
+                            "View the source code: github.com/TheAbubakrAbu/Aurebesh-Translator",
+                            destination: url
+                        )
                         .font(.body)
                         .foregroundColor(settings.accentColor.color)
                         .contextMenu {
-                            Button(action: {
-                                UIPasteboard.general.string = "https://github.com/TheAbubakrAbu/Aurebesh-Translator"
-                            }) {
+                            Button {
+                                UIPasteboard.general.string =
+                                "https://github.com/TheAbubakrAbu/Aurebesh-Translator"
+                            } label: {
                                 HStack {
                                     Image(systemName: "doc.on.doc")
                                     Text("Copy Website")
                                 }
                             }
                         }
+                    }
                 }
                 
                 Section {
@@ -97,9 +117,17 @@ struct CreditsView: View {
                 }
                 
                 Section(header: Text("CREDITS")) {
-                    Link("Credit for the Aurebesh font goes to Pixel Sagas", destination: URL(string: "https://www.fonts4free.net/aurebesh-font.html")!)
-                        .foregroundColor(settings.accentColor.color)
-                        .font(.body)
+                    Group {
+                        if let url = URL(string: "https://www.fonts4free.net/aurebesh-font.html") {
+                            Link(
+                                "Credit for the Aurebesh font goes to Pixel Sagas",
+                                destination: url
+                            )
+                        }
+
+                    }
+                    .foregroundColor(settings.accentColor.color)
+                    .font(.body)
                 }
                 
                 Section(header: Text("APPS BY ABUBAKR ELMALLAH")) {
@@ -160,8 +188,10 @@ struct AppLinkRow: View {
                 .frame(width: 50, height: 50)
                 .padding(.trailing, 8)
 
-            Link(title, destination: URL(string: url)!)
-                .font(.subheadline)
+            if let destination = URL(string: url) {
+                Link(title, destination: destination)
+                    .font(.subheadline)
+            }
         }
         .contextMenu {
             Button {

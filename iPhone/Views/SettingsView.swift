@@ -152,9 +152,14 @@ struct SettingsList: View {
                         .foregroundColor(settings.accentColor.color)
                 }
                 #else
-                Link("Accent colors are now exclusive to Datapad. Tap here to learn more.", destination: URL(string: "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone")!)
-                .font(.subheadline)
-                .foregroundColor(settings.accentColor.color)
+                if let url = URL(string: "https://apps.apple.com/us/app/datapad-aurebesh-translator/id6450498054?platform=iphone") {
+                    Link(
+                        "Accent colors are now exclusive to Datapad. Tap here to learn more.",
+                        destination: url
+                    )
+                    .font(.subheadline)
+                    .foregroundColor(settings.accentColor.color)
+                }
                 #endif
             }
             
@@ -176,6 +181,9 @@ struct SettingsList: View {
                 }
                 .sheet(isPresented: $showingCredits) {
                     CreditsView()
+                }
+                .sheet(isPresented: $showingDatapad) {
+                    SplashScreen()
                 }
 
                 Button(action: {
@@ -225,16 +233,18 @@ struct SettingsList: View {
                         .multilineTextAlignment(.leading)
                         .frame(width: glyphWidth)
                     
-                    Link("abubakrelmallah.com", destination: URL(string: "https://abubakrelmallah.com/")!)
-                        .font(.subheadline)
-                        .foregroundColor(settings.accentColor.color)
-                        .multilineTextAlignment(.leading)
-                        .padding(.leading, -4)
+                    if let url = URL(string: "https://abubakrelmallah.com/") {
+                        Link("abubakrelmallah.com", destination: url)
+                            .font(.subheadline)
+                            .foregroundColor(settings.accentColor.color)
+                            .multilineTextAlignment(.leading)
+                            .padding(.leading, -4)
+                    }
                 }
                 #if !os(watchOS)
                 .contextMenu {
                     Button(action: {
-                        UIPasteboard.general.string = "abubakrelmallah.com"
+                        UIPasteboard.general.string = "https://abubakrelmallah.com/"
                     }) {
                         HStack {
                             Image(systemName: "doc.on.doc")
